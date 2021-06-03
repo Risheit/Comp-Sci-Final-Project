@@ -14,7 +14,7 @@ namespace Comp_Sci_Final_Project
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
+            Application.EnableVisualStyles(); // Prevents blurriness for high-DPI screens
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
         }
