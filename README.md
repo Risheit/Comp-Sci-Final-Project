@@ -3,7 +3,9 @@ C# Game for Comp Sci
 
 Compilation of Card Games (w/ TMBG Deck):
 https://bicyclecards.com/players/1/
-   - [ ] Green Background (Casino style) -- R
+   - [x] Green Background (Casino style) -- R
+   - [ ] Add Cards -- R
+   - [ ] Add Timer -- D
 1. Memory -- D
    - [ ] Match numbers and colours (red 2 with red 2) -- R
    - [ ] Timer (increase difficulty to decrease initial time) -- D
