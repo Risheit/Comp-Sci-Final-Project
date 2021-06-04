@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Comp_Sci_Final_Project
 {
-    enum Suits      // Enum for card suits
+    enum Suit      // Enum for card suits
     {
         joker = 0,
         hearts = 3,
