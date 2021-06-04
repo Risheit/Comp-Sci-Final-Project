@@ -63,9 +63,9 @@ namespace Comp_Sci_Final_Project.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Placeholder_card_backing {
+        internal static System.Drawing.Bitmap Placeholder_card_back {
             get {
-                object obj = ResourceManager.GetObject("Placeholder_card_backing", resourceCulture);
+                object obj = ResourceManager.GetObject("Placeholder_card_back", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
