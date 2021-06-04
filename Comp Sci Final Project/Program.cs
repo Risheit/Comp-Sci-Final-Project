@@ -6,6 +6,15 @@ using System.Windows.Forms;
 
 namespace Comp_Sci_Final_Project
 {
+    enum Suits      // Enum for card suits
+    {
+        joker = 0,
+        hearts = 3,
+        diamonds,
+        clubs,
+        spades
+    }
+
     static class Program
     {
         /// <summary>
