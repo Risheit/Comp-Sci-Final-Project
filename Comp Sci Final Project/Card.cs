@@ -44,7 +44,7 @@ namespace Comp_Sci_Final_Project
             {
                 // Initialize image
                 Location = new Point(0, 0),
-                Name = name + "Back",
+                Name = name,
                 Size = new Size(56, 87),
                 SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage,
                 TabIndex = 0,
