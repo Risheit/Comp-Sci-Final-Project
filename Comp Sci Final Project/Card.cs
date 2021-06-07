@@ -15,9 +15,10 @@ namespace Comp_Sci_Final_Project
         private const int cardWidth = 56;       // The card's default width
         private const int cardHeight = 87;      // The card's default height
 
-        public PictureBox CardImage { get; private set; }      // The image for this card (private property)
-        public int Number { get; }      // This card's number (readonly property)
-        public Suit Suit { get; }       // This card's suit (readonly property)
+        public PictureBox CardImage { get; private set; }       // The image for this card (private property)
+        public int Number { get; }                              // This card's number (readonly property)
+        public CardSuit Suit { get; }                           // This card's suit (readonly property)
+        public CardColour Colour { get; }                       // This card's colour (readonly property)
 
         private bool isFrontFacing;     // Whether the front image is viewable or not
         public bool IsFrontFacing       // Whether the front image is viewable or not (public property)
@@ -53,7 +54,7 @@ namespace Comp_Sci_Final_Project
         /// <param name="name">This card's name</param>
         /// <param name="isFrontFacing">(Default false) Whether this card's front is viewable or not</param>
         /// <param name="isFlipOnClick">(Default false) Whether this card flips on click or not</param>
-        public Card(int number, Suit suit, string name, bool isFrontFacing = false, bool isFlipOnClick = false)
+        public Card(int number, CardSuit suit, string name, bool isFrontFacing = false, bool isFlipOnClick = false)
         {
             // Call constructor and initialize card image
             CardImage = new PictureBox
@@ -67,9 +68,11 @@ namespace Comp_Sci_Final_Project
                 TabStop = false // Can't be selected with tab
             };
 
-            // Initialize fields
+            // Initialize fields and properties
             Number = number;
             Suit = suit;
+            // Set card colour to red if the suit is hearts or diamonds, set it to black if it isn't
+            Colour = suit == CardSuit.hearts || suit == CardSuit.diamonds ? CardColour.red : CardColour.black;
             IsFrontFacing = isFrontFacing;  
             IsFlipOnClick = isFlipOnClick; 
         }
@@ -140,7 +143,8 @@ namespace Comp_Sci_Final_Project
         }
 
         /// <summary>
-        /// Overload that calls the regular FlipCard() function as an event so it can be attached to a mouse click.
+        /// Overload that calls the regular FlipCard() function as an event so it can be attached to a 
+        /// mouse click through code.
         /// </summary>
         /// <param name="sender">Sending object</param>
         /// <param name="e">Event Details</param>
@@ -149,5 +153,17 @@ namespace Comp_Sci_Final_Project
             FlipCard();
         }
 
+        /// <summary>
+        /// Checks if this card matches up with another card (the number and colour of both cards are the same)
+        /// </summary>
+        /// <param name="other">The other card to match</param>
+        /// <returns><see langword="true"/> if cards match, and <see langword="false"/> otherwise.</returns>
+        public bool IsMatch(Card other)
+        {
+            if (this.Number == other.Number && this.Colour == other.Colour)
+                return true;
+            else
+                return false;
+        }
     }
 }
