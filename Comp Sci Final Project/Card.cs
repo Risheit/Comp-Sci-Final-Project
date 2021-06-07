@@ -88,12 +88,6 @@ namespace Comp_Sci_Final_Project
             // Set the location for the card images
             CardImage.Location = new Point(x, y);
 
-            // Change card image depending on what side of the card should be displayed
-            if (IsFrontFacing) // Front side 
-                CardImage.Image = Properties.Resources.Placeholder_card_front;
-            else // Back side
-                CardImage.Image = Properties.Resources.Placeholder_card_back;
-
             // Draw card
             form.Controls.Add(CardImage);
         }
