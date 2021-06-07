@@ -12,31 +12,33 @@ namespace Comp_Sci_Final_Project
 {
     class Card
     {
+        private const int cardWidth = 56;       // The card's default width
+        private const int cardHeight = 87;      // The card's default height
 
-        public PictureBox CardImage { get; private set; }      // The image for this card (readonly)
-
+        public PictureBox CardImage { get; private set; }      // The image for this card (private property)
         public int Number { get; }      // This card's number (readonly property)
         public Suit Suit { get; }       // This card's suit (readonly property)
+
         private bool isFrontFacing;     // Whether the front image is viewable or not
         public bool IsFrontFacing       // Whether the front image is viewable or not (public property)
         {
             get => isFrontFacing; // Get field
             set // Change the image on the card depending on if it's front facing or not
             {
-                
                 CardImage.Image = value ? Properties.Resources.Placeholder_card_front : Properties.Resources.Placeholder_card_back;
                 isFrontFacing = value; // Change value of field
             }
         }
+
         private bool isFlipOnClick;     // Whether this card flips on a click or not
         public bool IsFlipOnClick       // Whether this card flips on a click or not (public property)
         {
             get => isFlipOnClick; // Get field
             set // Change whether the card can be flipped on click or not
             {
-                if (value) // Add flip card event on click if true
+                if (value) // Add flip card on click if true
                     CardImage.MouseClick += FlipCard;
-                else // Remove flip card event on click if false
+                else // Remove flip card on click if false
                     CardImage.MouseClick -= FlipCard;
 
                 isFlipOnClick = value; // Change value of field
@@ -50,24 +52,26 @@ namespace Comp_Sci_Final_Project
         /// <param name="suit">This card's suit</param>
         /// <param name="name">This card's name</param>
         /// <param name="isFrontFacing">(Default false) Whether this card's front is viewable or not</param>
-        public Card(int number, Suit suit, string name, bool isFrontFacing = false)
+        /// <param name="isFlipOnClick">(Default false) Whether this card flips on click or not</param>
+        public Card(int number, Suit suit, string name, bool isFrontFacing = false, bool isFlipOnClick = false)
         {
             // Call constructor and initialize card image
             CardImage = new PictureBox
             {
                 // Initialize image
-                Location = new Point(0, 0),
+                Location = new Point(),
                 Name = name,
-                Size = new Size(56, 87),
-                SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage,
+                Size = new Size(cardWidth, cardHeight),
+                SizeMode = PictureBoxSizeMode.StretchImage,
                 TabIndex = 0,
-                TabStop = false
+                TabStop = false // Can't be selected with tab
             };
 
             // Initialize fields
             Number = number;
             Suit = suit;
-            IsFrontFacing = isFrontFacing; // Pick which image to show 
+            IsFrontFacing = isFrontFacing;  
+            IsFlipOnClick = isFlipOnClick; 
         }
 
         /// <summary>
@@ -81,10 +85,10 @@ namespace Comp_Sci_Final_Project
             // Set the location for the card images
             CardImage.Location = new Point(x, y);
 
-            // Change card image to depending on what side the card is displaying
-            if (IsFrontFacing) // Front side being displayed
+            // Change card image depending on what side of the card should be displayed
+            if (IsFrontFacing) // Front side 
                 CardImage.Image = Properties.Resources.Placeholder_card_front;
-            else // Back side beind displayed
+            else // Back side
                 CardImage.Image = Properties.Resources.Placeholder_card_back;
 
             // Draw card
@@ -94,8 +98,7 @@ namespace Comp_Sci_Final_Project
         /// <summary>
         /// Flips a card from backside to front side, or vice-versa
         /// </summary>
-        /// <param name="form">The form being written to (usually the 'this' keyword)</param>
-        public async void FlipCard(Form form)
+        public async void FlipCard()
         {
             const int MillisecondsDelay = 26;       // How long to delay moving to next frame of flip animation
 
@@ -112,74 +115,38 @@ namespace Comp_Sci_Final_Project
             }
 
             // Flip the Card and switch the image on it
-            CardImage.Size = new Size(AdjustWidth(-20), CardImage.Size.Height); // Decrease width by 20
+            CardImage.Size = new Size(AdjustWidth(-20), cardHeight); // Decrease width by 20
             CardImage.Location = new Point(AdjustXPos(10), CardImage.Location.Y); // Move card to the right by 10
             await Task.Delay(MillisecondsDelay); // Delay next animation step
           
-            CardImage.Size = new Size(AdjustWidth(-20), CardImage.Size.Height);
+            CardImage.Size = new Size(AdjustWidth(-20), cardHeight);
             CardImage.Location = new Point(AdjustXPos(10), CardImage.Location.Y);
             await Task.Delay(MillisecondsDelay);
             
-            CardImage.Size = new Size(0, CardImage.Size.Height); // Decrease width to 0
+            CardImage.Size = new Size(0, cardHeight); // Decrease width to 0
             IsFrontFacing = !IsFrontFacing; // Flip Card Image
             
             await Task.Delay(MillisecondsDelay);
             
-            CardImage.Size = new Size(AdjustWidth(6), CardImage.Size.Height);
+            CardImage.Size = new Size(AdjustWidth(6), cardHeight);
             await Task.Delay(MillisecondsDelay);
             
-            CardImage.Size = new Size(AdjustWidth(20), CardImage.Size.Height); // Increase width by 20
+            CardImage.Size = new Size(AdjustWidth(20), cardHeight); // Increase width by 20
             CardImage.Location = new Point(AdjustXPos(-10), CardImage.Location.Y); // Move card to the left by 10
             await Task.Delay(MillisecondsDelay);
 
-            CardImage.Size = new Size(56, CardImage.Size.Height); // Reset size
-            CardImage.Location = new Point(AdjustXPos(-10), CardImage.Location.Y);
+            CardImage.Size = new Size(cardWidth, cardHeight); // Reset size
+            CardImage.Location = new Point(AdjustXPos(-10), CardImage.Location.Y); // Reset location
         }
 
         /// <summary>
-        /// Flips a card from backside to front side, or vice-versa (event version)
+        /// Overload that calls the regular FlipCard() function as an event so it can be attached to a mouse click.
         /// </summary>
         /// <param name="sender">Sending object</param>
         /// <param name="e">Event Details</param>
-        private async void FlipCard(object sender, MouseEventArgs e)
+        private void FlipCard(object sender, MouseEventArgs e)
         {
-            const int MillisecondsDelay = 26;       // How long to delay moving to next frame of flip animation
-
-            /* Local functions */
-            // Returns the value of the current card width adjusted by a given amount
-            int AdjustWidth(int width)
-            {
-                return CardImage.Size.Width + width;
-            }
-            // Returns the value of the current card's x position adjusted by a given amount
-            int AdjustXPos(int x)
-            {
-                return CardImage.Location.X + x;
-            }
-
-            // Flip the Card and switch the image on it
-            CardImage.Size = new Size(AdjustWidth(-20), CardImage.Size.Height); // Decrease width by 20
-            CardImage.Location = new Point(AdjustXPos(10), CardImage.Location.Y); // Move card to the right by 10
-            await Task.Delay(MillisecondsDelay); // Delay next animation step
-
-            CardImage.Size = new Size(AdjustWidth(-20), CardImage.Size.Height);
-            CardImage.Location = new Point(AdjustXPos(10), CardImage.Location.Y);
-            await Task.Delay(MillisecondsDelay);
-
-            CardImage.Size = new Size(0, CardImage.Size.Height); // Decrease width to 0
-            IsFrontFacing = !IsFrontFacing; // Flip Card Image
-
-            await Task.Delay(MillisecondsDelay);
-
-            CardImage.Size = new Size(AdjustWidth(6), CardImage.Size.Height);
-            await Task.Delay(MillisecondsDelay);
-
-            CardImage.Size = new Size(AdjustWidth(20), CardImage.Size.Height); // Increase width by 20
-            CardImage.Location = new Point(AdjustXPos(-10), CardImage.Location.Y); // Move card to the left by 10
-            await Task.Delay(MillisecondsDelay);
-
-            CardImage.Size = new Size(56, CardImage.Size.Height); // Reset size
-            CardImage.Location = new Point(AdjustXPos(-10), CardImage.Location.Y);
+            FlipCard();
         }
 
     }
