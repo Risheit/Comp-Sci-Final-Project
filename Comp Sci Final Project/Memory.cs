@@ -11,12 +11,14 @@ using System.Windows.Forms;
 
 namespace Comp_Sci_Final_Project
 {
-    public partial class Form1 : Form
+    public partial class Memory : Form
     {
+        
+
         /// <summary>
         /// Constructor
         /// </summary>
-        public Form1()
+        public Memory()
         {
             InitializeComponent();
         }

@@ -31,7 +31,7 @@ namespace Comp_Sci_Final_Project
         {
             Application.EnableVisualStyles(); // Prevents blurriness for high-DPI screens
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Memory());
         }
     }
 }

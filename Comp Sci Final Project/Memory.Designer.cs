@@ -1,7 +1,7 @@
 ﻿
 namespace Comp_Sci_Final_Project
 {
-    partial class Form1
+    partial class Memory
     {
         /// <summary>
         /// Required designer variable.
