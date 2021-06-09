@@ -93,6 +93,15 @@ namespace Comp_Sci_Final_Project
         }
 
         /// <summary>
+        /// Removes the card image from a given form
+        /// </summary>
+        /// <param name="form">The form being written to (usually the 'this' keyword)</param>
+        public void RemoveCard(Form form)
+        {
+            form.Controls.Remove(CardImage);
+        }
+
+        /// <summary>
         /// Flips a card from backside to front side, or vice-versa
         /// </summary>
         public async void FlipCard()
