@@ -8,8 +8,7 @@ namespace Comp_Sci_Final_Project
 {
     enum CardSuit       // Enum for card suits
     {
-        joker1 = 0,
-        joker2,
+        joker = 0,
         hearts = 3,
         diamonds,
         clubs,
