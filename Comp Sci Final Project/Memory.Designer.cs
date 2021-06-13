@@ -29,21 +29,42 @@ namespace Comp_Sci_Final_Project
         /// </summary>
         private void InitializeComponent()
         {
+            this.HeaderBar = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // Form1
+            // HeaderBar
+            // 
+            this.HeaderBar.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.HeaderBar.BackColor = System.Drawing.Color.Silver;
+            this.HeaderBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.HeaderBar.Cursor = System.Windows.Forms.Cursors.Default;
+            this.HeaderBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HeaderBar.ForeColor = System.Drawing.Color.Black;
+            this.HeaderBar.Location = new System.Drawing.Point(0, 0);
+            this.HeaderBar.Name = "HeaderBar";
+            this.HeaderBar.ReadOnly = true;
+            this.HeaderBar.Size = new System.Drawing.Size(800, 22);
+            this.HeaderBar.TabIndex = 0;
+            this.HeaderBar.TabStop = false;
+            this.HeaderBar.Text = "Points: 0";
+            // 
+            // Memory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.ForestGreen;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(800, 440);
+            this.Controls.Add(this.HeaderBar);
+            this.Name = "Memory";
+            this.Text = "Memory";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.TextBox HeaderBar;
     }
 }
 

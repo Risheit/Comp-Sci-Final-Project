@@ -26,7 +26,7 @@ namespace Comp_Sci_Final_Project
             get => isFrontFacing; // Get field
             set // Change the image on the card depending on if it's front facing or not
             {
-                CardImage.Image = value ? Properties.Resources.Placeholder_card_front : Properties.Resources.Placeholder_card_back;
+                CardImage.Image = value ? Program.GetCardImage(Suit, Number) : Properties.Resources.Placeholder_card_back;
                 isFrontFacing = value; // Change value of field
             }
         }
@@ -65,7 +65,7 @@ namespace Comp_Sci_Final_Project
                 Size = new Size(cardWidth, cardHeight),
                 SizeMode = PictureBoxSizeMode.StretchImage,
                 TabIndex = 0,
-                TabStop = false // Can't be selected with tab
+                TabStop = false, // Can't be selected with tab
             };
 
             // Initialize fields and properties
