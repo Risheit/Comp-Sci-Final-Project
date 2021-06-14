@@ -38,6 +38,8 @@ namespace Comp_Sci_Final_Project
             cardDictionary = new Dictionary<string, System.Drawing.Bitmap>
             {
                 // Add images to dictionary
+                { CardSuit.joker.ToString() + 0, Properties.Resources.Joker},
+
                 { CardSuit.hearts.ToString() + 1, Properties.Resources.AH},
                 { CardSuit.hearts.ToString() + 2, Properties.Resources._2H},
                 { CardSuit.hearts.ToString() + 3, Properties.Resources._3H},
@@ -113,7 +115,7 @@ namespace Comp_Sci_Final_Project
             cardDictionary.TryGetValue(suit.ToString() + number, out cardImage);
 
             // Write error if lookup fails
-            Debug.WriteLineIf(cardImage == default(System.Drawing.Bitmap), "Lookup failed");
+            Debug.WriteLineIf(cardImage == default(System.Drawing.Bitmap), "Lookup failed, " + suit.ToString() + number);
 
             // Return value looked up
             return cardImage;

@@ -493,6 +493,16 @@ namespace Comp_Sci_Final_Project.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Joker {
+            get {
+                object obj = ResourceManager.GetObject("Joker", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap JS {
             get {
                 object obj = ResourceManager.GetObject("JS", resourceCulture);
