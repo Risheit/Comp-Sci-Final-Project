@@ -26,7 +26,7 @@ namespace Comp_Sci_Final_Project
             get => isFrontFacing; // Get field
             set // Change the image on the card depending on if it's front facing or not
             {
-                CardImage.Image = value ? Program.GetCardImage(Suit, Number) : Properties.Resources.Placeholder_card_back;
+                CardImage.Image = value ? Program.GetCardImage(Suit, Number) : Properties.Resources.red_back;
                 isFrontFacing = value; // Change value of field
             }
         }

@@ -27,12 +27,12 @@ namespace Comp_Sci_Final_Project
 
             cards = new Card[5, 13]; 
             // Initialize first array of two cards as jokers
-            cards[0, 0] = new Card(0, CardSuit.joker, "joker1", true, true);
-            cards[0, 1] = new Card(0, CardSuit.joker, "joker2", true, true);
+            cards[0, 0] = new Card(0, CardSuit.joker, "joker1", false, true);
+            cards[0, 1] = new Card(0, CardSuit.joker, "joker2", false, true);
             // Initialize number and face cards with the name being suit + number
             for (int i = 1; i <= 4; i++) // Suits
                 for (int j = 1; j <= 13; j++) // Numbers
-                    cards[i, j - 1] = new Card(j, (CardSuit)i, Enum.GetName(typeof(CardSuit), i) + j, true, true);
+                    cards[i, j - 1] = new Card(j, (CardSuit)i, Enum.GetName(typeof(CardSuit), i) + j, false, true);
 
             DrawInitialCards(); // Set initial cards
         }
