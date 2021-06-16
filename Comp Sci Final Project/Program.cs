@@ -23,7 +23,7 @@ namespace Comp_Sci_Final_Project
 
     static class Program
     {
-        private static Dictionary<string, System.Drawing.Bitmap> cardDictionary; // Dictionary for card images
+        private static Dictionary<string, System.Drawing.Bitmap> imageDictionary; // Dictionary for card images
 
         /// <summary>
         /// The main entry point for the application.
@@ -35,10 +35,10 @@ namespace Comp_Sci_Final_Project
 
 
             // Initialize dictionary
-            cardDictionary = new Dictionary<string, System.Drawing.Bitmap>
+            imageDictionary = new Dictionary<string, System.Drawing.Bitmap>
             {
-                // Add images to dictionary
-                { CardSuit.joker.ToString() + 0, Properties.Resources.Joker},
+                //// Add images to dictionary
+                //{ CardSuit.joker.ToString() + 0, Properties.Resources.Joker},
 
                 { CardSuit.hearts.ToString() + 1, Properties.Resources.AH},
                 { CardSuit.hearts.ToString() + 2, Properties.Resources._2H},
@@ -112,7 +112,7 @@ namespace Comp_Sci_Final_Project
         {
             System.Drawing.Bitmap cardImage;        // The card image to return
 
-            cardDictionary.TryGetValue(suit.ToString() + number, out cardImage);
+            imageDictionary.TryGetValue(suit.ToString() + number, out cardImage);
 
             // Write error if lookup fails
             Debug.WriteLineIf(cardImage == default(System.Drawing.Bitmap), "Lookup failed, " + suit.ToString() + number);

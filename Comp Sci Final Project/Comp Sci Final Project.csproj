@@ -85,7 +85,6 @@
     <None Include="Resources\CardBack.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\cards_jpeg_zip.zip" />
     <None Include="Resources\Placeholder card back.png" />
   </ItemGroup>
   <ItemGroup>

@@ -12,8 +12,8 @@ namespace Comp_Sci_Final_Project
 {
     class Card
     {
-        public const int cardWidth = 56;       // The card's default width
-        public const int cardHeight = 87;      // The card's default height
+        public const int cardWidth = 112;       // The card's default width
+        public const int cardHeight = 174;      // The card's default height
 
         public PictureBox CardImage { get; private set; }       // The image for this card (private property)
         public int Number { get; }                              // This card's number (readonly property)
