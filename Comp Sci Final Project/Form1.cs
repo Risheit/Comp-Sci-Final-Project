@@ -12,9 +12,14 @@ namespace Comp_Sci_Final_Project
 {
     public partial class Form1 : Form
     {
+        CountdownTimer timer;
+
         public Form1()
         {
             InitializeComponent();
+
+            timer = new CountdownTimer(4);
+            timer.DrawTimer(14, 12, this);
         }
     }
 }
