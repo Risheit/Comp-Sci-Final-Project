@@ -49,7 +49,7 @@ namespace Comp_Sci_Final_Project
                 // Decrease timer by a second until it has stopped
                 totalSeconds--;
                 int seconds = totalSeconds;
-                label.Text = "Time Remaining: " + seconds.ToString();
+                label.Text = "Time Remaining: " + seconds.ToString(); // Change displayed time
             }
             else // When timer is 0, it stops
             {
