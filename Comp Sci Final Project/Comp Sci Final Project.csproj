@@ -55,6 +55,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CountdownTimer.cs" />
     <EmbeddedResource Include="Memory.resx">
       <DependentUpon>Memory.cs</DependentUpon>
     </EmbeddedResource>
