@@ -1,7 +1,7 @@
 ﻿
 namespace Comp_Sci_Final_Project
 {
-    partial class Memory
+    partial class CountdownMemory
     {
         /// <summary>
         /// Required designer variable.
@@ -29,37 +29,47 @@ namespace Comp_Sci_Final_Project
         /// </summary>
         private void InitializeComponent()
         {
-            this.HeaderBar = new System.Windows.Forms.TextBox();
+            this.PointsDisplay = new System.Windows.Forms.Label();
+            this.HeaderBar = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.HeaderBar)).BeginInit();
             this.SuspendLayout();
+            // 
+            // PointsDisplay
+            // 
+            this.PointsDisplay.AutoSize = true;
+            this.PointsDisplay.BackColor = System.Drawing.Color.Silver;
+            this.PointsDisplay.Location = new System.Drawing.Point(9, -1);
+            this.PointsDisplay.Margin = new System.Windows.Forms.Padding(0);
+            this.PointsDisplay.Name = "PointsDisplay";
+            this.PointsDisplay.Size = new System.Drawing.Size(63, 17);
+            this.PointsDisplay.TabIndex = 0;
+            this.PointsDisplay.Text = "Points: 0";
             // 
             // HeaderBar
             // 
-            this.HeaderBar.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.HeaderBar.BackColor = System.Drawing.Color.Silver;
             this.HeaderBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.HeaderBar.Cursor = System.Windows.Forms.Cursors.Default;
-            this.HeaderBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HeaderBar.ForeColor = System.Drawing.Color.Black;
-            this.HeaderBar.Location = new System.Drawing.Point(0, 0);
+            this.HeaderBar.Location = new System.Drawing.Point(-7, -1);
+            this.HeaderBar.Margin = new System.Windows.Forms.Padding(0);
             this.HeaderBar.Name = "HeaderBar";
-            this.HeaderBar.ReadOnly = true;
-            this.HeaderBar.Size = new System.Drawing.Size(880, 22);
-            this.HeaderBar.TabIndex = 0;
+            this.HeaderBar.Size = new System.Drawing.Size(864, 17);
+            this.HeaderBar.TabIndex = 1;
             this.HeaderBar.TabStop = false;
-            this.HeaderBar.Text = "Points: 0";
             // 
-            // Memory
+            // CountdownMemory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.ForestGreen;
-            this.ClientSize = new System.Drawing.Size(1512, 744);
+            this.ClientSize = new System.Drawing.Size(828, 358);
+            this.Controls.Add(this.PointsDisplay);
             this.Controls.Add(this.HeaderBar);
             this.MaximizeBox = false;
-            this.Name = "Memory";
+            this.Name = "CountdownMemory";
             this.Text = "Memory";
+            ((System.ComponentModel.ISupportInitialize)(this.HeaderBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -67,7 +77,8 @@ namespace Comp_Sci_Final_Project
 
         #endregion
 
-        private System.Windows.Forms.TextBox HeaderBar;
+        private System.Windows.Forms.Label PointsDisplay;
+        private System.Windows.Forms.PictureBox HeaderBar;
     }
 }
 

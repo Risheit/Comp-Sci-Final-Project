@@ -99,7 +99,7 @@ namespace Comp_Sci_Final_Project
 
 
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Memory());
+            Application.Run(new CountdownMemory());
         }
 
         /// <summary>

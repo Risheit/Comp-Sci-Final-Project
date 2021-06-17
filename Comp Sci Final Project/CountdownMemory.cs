@@ -11,26 +11,29 @@ using System.Windows.Forms;
 
 namespace Comp_Sci_Final_Project
 {
-    public partial class Memory : Form
+    public partial class CountdownMemory : Form
     {
-        readonly Card[,] cards;              // Matrix of cards in the game
-        readonly Random random;              // Random number generator
+        readonly Card[,] cards;     // Matrix of cards in the game
+        readonly Random random;     // Random number generator
+        CountdownTimer timer;       // Timer to display
         Card firstFlippedCard;      // The card that was previously flipped 
         int points;                 // The amount of points the user has gotten
+        
 
         /// <summary>
         /// Constructor
         /// </summary>
-        public Memory()
+        public CountdownMemory()
         {
             // Initialize components
             InitializeComponent(); 
             random = new Random(); 
             firstFlippedCard = null; // No card previously flipped
+            timer = new CountdownTimer(4, "Starting in");
+
             points = 0;
 
             cards = new Card[4, 13]; // Initialize matrix 
-
             // Initialize number and face cards with the name being suit + number
             for (int i = 1; i <= 4; i++) // Suits
                 for (int j = 1; j <= 13; j++) // Numbers
@@ -39,10 +42,14 @@ namespace Comp_Sci_Final_Project
                 }
             SetAllCardClickEvents(true); // Activate card click events
 
+            // Draw components
             DrawInitialCards();
+            
+            // Adjust form and form size
+            HeaderBar.Size = new Size(ClientSize.Width - timer.Size.Width - 30, 22);
 
-            // Change size of header bar to fit adjusted form
-            HeaderBar.Size = new System.Drawing.Size(ClientSize.Width, 22);
+            timer.DrawTimer(Size.Width - timer.Size.Width - 50, 0, this);
+
         }
 
         /// <summary>
@@ -159,10 +166,9 @@ namespace Comp_Sci_Final_Project
 
                 AwardPoints();
             }
-            else // If cards don't match, flip both of them to their back
+            else // If cards don't match, flip both of them to their back at the same time
             {
-                firstFlippedCard.FlipCard();
-                cards[index.row, index.column].FlipCard();
+                await Task.WhenAll(firstFlippedCard.FlipCard(), cards[index.row, index.column].FlipCard());
             }
 
             SetAllCardClickEvents(true); // Reactivate flipping
@@ -178,7 +184,7 @@ namespace Comp_Sci_Final_Project
             points += 100;
 
             // Repaint header to reflect change in points
-            HeaderBar.Text = "Points: " + points;
+            PointsDisplay.Text = "Points: " + points;
         }
 
         /// <summary>
