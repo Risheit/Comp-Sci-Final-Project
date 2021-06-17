@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Contains a timer and a label to display the timer
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
