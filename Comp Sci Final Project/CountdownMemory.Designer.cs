@@ -49,7 +49,7 @@ namespace Comp_Sci_Final_Project
             // 
             this.HeaderBar.BackColor = System.Drawing.Color.Silver;
             this.HeaderBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.HeaderBar.Location = new System.Drawing.Point(-7, -1);
+            this.HeaderBar.Location = new System.Drawing.Point(-1, -1);
             this.HeaderBar.Margin = new System.Windows.Forms.Padding(0);
             this.HeaderBar.Name = "HeaderBar";
             this.HeaderBar.Size = new System.Drawing.Size(601, 20);
