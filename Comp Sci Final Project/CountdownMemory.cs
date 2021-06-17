@@ -13,14 +13,14 @@ namespace Comp_Sci_Final_Project
 {
     public partial class CountdownMemory : Form
     {
-        readonly Card[,] cards;     // Matrix of cards in the game
-        readonly Random random;     // Random number generator
-        CountdownTimer timer;       // Timer to display
-        Card firstFlippedCard;      // The card that was previously flipped 
+        private readonly Card[,] cards;     // Matrix of cards in the game
+        private readonly Random random;     // Random number generator
+        private CountdownTimer timer;       // Timer to display
+        private Card firstFlippedCard;      // The card that was previously flipped 
 
-        int points;                 // The amount of points the user has gotten
-        int pairsMissed;            // The number of unsucessful flips before a match is made
-        int totalCardsFlipped;      // The total number of flips made
+        private int points;                 // The amount of points the user has gotten
+        private int pairsMissed;            // The number of unsucessful flips before a match is made
+        private int totalCardsFlipped;      // The total number of flips made
 
         /// <summary>
         /// Constructor
