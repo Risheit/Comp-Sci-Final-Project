@@ -17,8 +17,10 @@ namespace Comp_Sci_Final_Project
         readonly Random random;     // Random number generator
         CountdownTimer timer;       // Timer to display
         Card firstFlippedCard;      // The card that was previously flipped 
+
         int points;                 // The amount of points the user has gotten
-        
+        int pairsMissed;            // The number of unsucessful flips before a match is made
+        int totalCardsFlipped;      // The total number of flips made
 
         /// <summary>
         /// Constructor
@@ -29,27 +31,36 @@ namespace Comp_Sci_Final_Project
             InitializeComponent(); 
             random = new Random(); 
             firstFlippedCard = null; // No card previously flipped
-            timer = new CountdownTimer(4, "Starting in");
 
             points = 0;
+            pairsMissed = 0;
+            totalCardsFlipped = 0;
 
             cards = new Card[4, 13]; // Initialize matrix 
-            // Initialize number and face cards with the name being suit + number
+            // Initialize and draw number and face cards with the name being suit + number
             for (int i = 1; i <= 4; i++) // Suits
                 for (int j = 1; j <= 13; j++) // Numbers
                 {
-                    cards[i - 1, j - 1] = new Card(j, (CardSuit)i, Enum.GetName(typeof(CardSuit), i) + j, false);
+                    cards[i - 1, j - 1] = new Card(j, (CardSuit)i, Enum.GetName(typeof(CardSuit), i) + j, true);
                 }
-            SetAllCardClickEvents(true); // Activate card click events
-
-            // Draw components
             DrawInitialCards();
-            
-            // Adjust form and form size
-            HeaderBar.Size = new Size(ClientSize.Width - timer.Size.Width - 30, 22);
 
-            timer.DrawTimer(Size.Width - timer.Size.Width - 50, 0, this);
+            // Resize header bar to fit
+            HeaderBar.Size = new Size(ClientSize.Width - 200, 22);
+        }
 
+        /// <summary>
+        /// Runs a preperation period for 4 seconds to give the player some time to breathe
+        /// </summary>
+        private async Task RunPreperationPeriod()
+        {
+            // Create and draw a timer to show how long the preperation period is
+            timer = new CountdownTimer(4, "Starting in");
+            timer.DrawTimer(HeaderBar.Width, 0, this);
+
+            await Task.Run(() => timer.GetTimerEnd()); // Wait for the preperation timer to end
+
+            SetAllCardClickEvents(true); // Activate card click events
         }
 
         /// <summary>
@@ -166,11 +177,13 @@ namespace Comp_Sci_Final_Project
 
                 AwardPoints();
             }
-            else // If cards don't match, flip both of them to their back at the same time
+            else // If cards don't match, flip both of them to their back at the same time 
             {
+                pairsMissed++; // Increase the number of missed matches
                 await Task.WhenAll(firstFlippedCard.FlipCard(), cards[index.row, index.column].FlipCard());
             }
 
+            totalCardsFlipped++;
             SetAllCardClickEvents(true); // Reactivate flipping
             firstFlippedCard = null; // Reset the first flipped card
         }
@@ -180,8 +193,9 @@ namespace Comp_Sci_Final_Project
         /// </summary>
         private void AwardPoints()
         {
-            // Increase points
-            points += 100;
+            // Increase points depending on the pairs missed, prevenint any points lost
+            points += 100 - (4 * pairsMissed) < 0? 0 : 100 - (4 * pairsMissed);
+            pairsMissed = 0; // Reset the missed pairs 
 
             // Repaint header to reflect change in points
             PointsDisplay.Text = "Points: " + points;
@@ -221,6 +235,39 @@ namespace Comp_Sci_Final_Project
                     card.CardImage.MouseClick -= CheckCardMatch;
                     card.IsFlipOnClick = false;
                 }
+        }
+
+        /// <summary>
+        /// Runs events on window load
+        /// </summary>
+        /// <param name="sender">Sending object</param>
+        /// <param name="e">Event details</param>
+        private async void CountdownMemory_Load(object sender, EventArgs e)
+        {
+            Label label;       // Label that prints different messages to the window
+
+            // Give time for player to get ready 
+            await RunPreperationPeriod();
+            timer.Visible = false;
+
+            // Print starting text for 1 second 
+            label = new Label()
+            {
+                AutoSize = true,
+                Name = "startingText",
+                Location = new Point(HeaderBar.Width, 0),
+                Text = "Begin!"
+            };
+            Controls.Add(label);
+            await Task.Delay(1000);
+            Controls.Remove(label); 
+
+            // Initialize and draw game timer 
+            timer = new CountdownTimer(300, "Time Remaining")
+            {
+                Visible = true
+            };
+            timer.DrawTimer(HeaderBar.Width, 0, this);
         }
     }
 }

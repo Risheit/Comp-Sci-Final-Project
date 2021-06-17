@@ -12,11 +12,21 @@ namespace Comp_Sci_Final_Project
 {
     class CountdownTimer
     {
-        private int totalSeconds;       // The total seconds
-        private string labelText;       // The text displayed on the label about what this timer is
-        private Label label;            // Label to display time left
-        public Size Size { get; private set; }       // The size of the container   
-        public Timer Timer { get; }     // Timer to countdown
+        private int totalSeconds;                   // The total seconds
+        private string labelText;                   // The text displayed on the label about what this timer is
+        private Label label;                        // Label to display time left
+        public Size Size { get; private set; }      // The size of the container (readonly property
+        public Timer Timer { get; }                 // Timer to countdown
+        private bool visible;                       // The visibility of the timer and its label
+        public bool Visible                         // The visibility of the timer and its label (public property)
+        {
+            get => visible;
+            set
+            {
+                label.Visible = value; // Set the visibility of the label
+                visible = value;
+            }
+        }
 
         /// <summary>
         /// Constructor that initializes the timer and sets its countdown amount
@@ -78,9 +88,23 @@ namespace Comp_Sci_Final_Project
             // Set the location for the label
             label.Location = new System.Drawing.Point(x, y);
             label.BringToFront();
-            
+
             // Draw label
             form.Controls.Add(label);
+            // Anchor timer to spot on form
+            label.Anchor = (AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom);
         }
+
+        /// <summary>
+        /// Creates a loop and returns true when the timer ends. Recommened use in an async function.
+        /// </summary>
+        /// <returns><see langword="true"/> when timer ends</returns>
+        public bool GetTimerEnd()
+        {
+            while (Timer.Enabled) // Loop until timer stops
+            { continue; }
+            return true;
+        }
+
     }
 }

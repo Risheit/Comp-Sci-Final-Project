@@ -38,7 +38,7 @@ namespace Comp_Sci_Final_Project
             // 
             this.PointsDisplay.AutoSize = true;
             this.PointsDisplay.BackColor = System.Drawing.Color.Silver;
-            this.PointsDisplay.Location = new System.Drawing.Point(9, -1);
+            this.PointsDisplay.Location = new System.Drawing.Point(12, 2);
             this.PointsDisplay.Margin = new System.Windows.Forms.Padding(0);
             this.PointsDisplay.Name = "PointsDisplay";
             this.PointsDisplay.Size = new System.Drawing.Size(63, 17);
@@ -52,23 +52,27 @@ namespace Comp_Sci_Final_Project
             this.HeaderBar.Location = new System.Drawing.Point(-7, -1);
             this.HeaderBar.Margin = new System.Windows.Forms.Padding(0);
             this.HeaderBar.Name = "HeaderBar";
-            this.HeaderBar.Size = new System.Drawing.Size(864, 17);
+            this.HeaderBar.Size = new System.Drawing.Size(601, 17);
+            this.HeaderBar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.HeaderBar.TabIndex = 1;
             this.HeaderBar.TabStop = false;
             // 
             // CountdownMemory
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.ForestGreen;
-            this.ClientSize = new System.Drawing.Size(828, 358);
+            this.ClientSize = new System.Drawing.Size(682, 381);
             this.Controls.Add(this.PointsDisplay);
             this.Controls.Add(this.HeaderBar);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.MaximizeBox = false;
             this.Name = "CountdownMemory";
+            this.Padding = new System.Windows.Forms.Padding(3);
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Memory";
+            this.Load += new System.EventHandler(this.CountdownMemory_Load);
             ((System.ComponentModel.ISupportInitialize)(this.HeaderBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

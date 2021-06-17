@@ -12,8 +12,8 @@ namespace Comp_Sci_Final_Project
 {
     class Card
     {
-        public const int cardWidth = 112;       // The card's default width
-        public const int cardHeight = 174;      // The card's default height
+        public static int cardWidth = 112 / 2;       // The card's default width
+        public static int cardHeight = 174 / 2;      // The card's default height
 
         public PictureBox CardImage { get; private set; }       // The image for this card (private property)
         public int Number { get; }                              // This card's number (readonly property)
@@ -63,7 +63,7 @@ namespace Comp_Sci_Final_Project
                 Location = new Point(),
                 Name = name,
                 Size = new Size(cardWidth, cardHeight),
-                SizeMode = PictureBoxSizeMode.StretchImage,
+                SizeMode = PictureBoxSizeMode.Zoom,
                 TabIndex = 0,
                 TabStop = false, // Can't be selected with tab
             };
