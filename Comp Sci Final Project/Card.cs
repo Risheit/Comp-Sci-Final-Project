@@ -104,7 +104,7 @@ namespace Comp_Sci_Final_Project
         /// <summary>
         /// Flips a card from backside to front side, or vice-versa
         /// </summary>
-        public async void FlipCard()
+        public async Task FlipCard()
         {
             const int MillisecondsDelay = 26;       // How long to delay moving to next frame of flip animation
 
@@ -151,9 +151,9 @@ namespace Comp_Sci_Final_Project
         /// </summary>
         /// <param name="sender">Sending object</param>
         /// <param name="e">Event Details</param>
-        private void FlipCard(object sender, MouseEventArgs e)
+        private async void FlipCard(object sender, MouseEventArgs e)
         {
-            FlipCard();
+            await FlipCard();
         }
 
         /// <summary>
