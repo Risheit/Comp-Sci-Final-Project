@@ -1,7 +1,7 @@
 ﻿
 namespace Comp_Sci_Final_Project
 {
-    partial class CountdownMemory
+    partial class UntimedMemory
     {
         /// <summary>
         /// Required designer variable.
@@ -31,11 +31,11 @@ namespace Comp_Sci_Final_Project
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UntimedMemory));
             this.PointsDisplay = new System.Windows.Forms.Label();
-            this.HeaderBar = new System.Windows.Forms.PictureBox();
             this.Statistics = new System.Windows.Forms.Label();
             this.Quit = new System.Windows.Forms.Button();
             this.StatisticsHeader = new System.Windows.Forms.Label();
             this.GameEnd = new System.Windows.Forms.Label();
+            this.HeaderBar = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderBar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,18 +49,6 @@ namespace Comp_Sci_Final_Project
             this.PointsDisplay.Size = new System.Drawing.Size(63, 17);
             this.PointsDisplay.TabIndex = 0;
             this.PointsDisplay.Text = "Points: 0";
-            // 
-            // HeaderBar
-            // 
-            this.HeaderBar.BackColor = System.Drawing.Color.Silver;
-            this.HeaderBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.HeaderBar.Location = new System.Drawing.Point(-1, -1);
-            this.HeaderBar.Margin = new System.Windows.Forms.Padding(0);
-            this.HeaderBar.Name = "HeaderBar";
-            this.HeaderBar.Size = new System.Drawing.Size(601, 20);
-            this.HeaderBar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.HeaderBar.TabIndex = 1;
-            this.HeaderBar.TabStop = false;
             // 
             // Statistics
             // 
@@ -114,7 +102,19 @@ namespace Comp_Sci_Final_Project
             this.GameEnd.Text = "Game End";
             this.GameEnd.Visible = false;
             // 
-            // CountdownMemory
+            // HeaderBar
+            // 
+            this.HeaderBar.BackColor = System.Drawing.Color.Silver;
+            this.HeaderBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.HeaderBar.Location = new System.Drawing.Point(-1, -1);
+            this.HeaderBar.Margin = new System.Windows.Forms.Padding(0);
+            this.HeaderBar.Name = "HeaderBar";
+            this.HeaderBar.Size = new System.Drawing.Size(601, 20);
+            this.HeaderBar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.HeaderBar.TabIndex = 1;
+            this.HeaderBar.TabStop = false;
+            // 
+            // UntimedMemory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -130,11 +130,11 @@ namespace Comp_Sci_Final_Project
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "CountdownMemory";
+            this.Name = "UntimedMemory";
             this.Padding = new System.Windows.Forms.Padding(3);
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Memory";
-            this.Load += new System.EventHandler(this.CountdownMemory_Load);
+            this.Load += new System.EventHandler(this.UntimedMemory_Load);
             ((System.ComponentModel.ISupportInitialize)(this.HeaderBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

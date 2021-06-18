@@ -117,7 +117,130 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="CardImage.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="Authors.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="Title1.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="Heading1.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Memory is a game where you match cards to earn points. 
+A card is considered to be a match with another card when 
+its number and colour are the same. Each match you make
+earns you up to 100 points, with you losing 4 points for each
+match you miss. 
+ 
+</value>
+  </data>
+  <metadata name="pictureBox1.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="pictureBox2.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="label3.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="label2.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="label2.Text" xml:space="preserve">
+    <value>The points that you've earned can be spotted at the top left
+of the header bar at the top of the screen.
+Announcements, such as when the game starts, ends, as 
+well as when a successful match is made can be found right
+of the header bar. The current time remaining can also be 
+found here, if you are playing a timed game.
+</value>
+  </data>
+  <metadata name="Header2.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="label4.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="Header3.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="pictureBox3.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pictureBox3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAGoAAAASCAYAAACzUEs7AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
+        dAAAEnQB3mYfeAAAAf5JREFUWEftl9GxhCAMRe2HVlIKjaQQ+rAzXhIRQcGBLLrrGz/OzG5MMORCwGme
+        Z//y+7xCPYRXqIcwRCiEyU9TCeMNWO8KMXWct4ZiTW/c9TiH3gLNySzzQudUPhrGCVUqLCUNLFhX0X9T
+        KGeNLD6wSGI4jxbkv7GbEC0+Wq4VikFO1njrCs8GshQJPBaefU5YPICZPZ93i4+e64Vy1hteZZjbuUUg
+        EoNag1ooWUjH/HJKu3xva/HRc/+OIuFAkjceAKiX829Idtx+cqF9cr+nVsKic2E5BkOMvH+1E7HVcOul
+        92TPkjihSSiC/PjdhnaMoxyRziGeVxbX4qPknjMqtoPtf33VVYTiAnDvL/qUdlTLuzoJQiyiVwRo8VEw
+        TqiYXALvmlhcorZ6M3ttR+W9fy/MQajQcpfVvcVpWcbf7xZePMfLxJmPlutbX8IykcLFYi2qTGiQUMRa
+        KCFcly0qipblt9mz+bT4JPZe/rVQ0ZcuLZbPNx5XRCv7VZEdX89bOkGLT2rv5Fahbm19NWo5nHGadxCn
+        xSe1d3KvUKsI0sN3thj/iVBJQdbCZa2Izw0aKxW0VuCMkBPHreMfPuZbfPTcLBRBrUB3PT8XSvykUJuv
+        IxFiuwuor+ciMp1zcSw+8/YXlRYfHUOE0rB98Jafv+R8TaiXPl6hHsHs/wD92RfcH8R+ugAAAABJRU5E
+        rkJggg==
+</value>
+  </data>
+  <metadata name="pictureBox4.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="pictureBox4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAKIAAAAVCAYAAADFPTXWAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
+        dAAAEnQB3mYfeAAAA5FJREFUaEPtWDGy4jAM3bNwgf2XWU5A97t09HR/hgMwXICaio4ZKk5AwwynoPZK
+        luzIjuMobJKfz7p4M0BeLOnp2RH5dT6fjQar1cosvhbmz+fvgoLBgJ5CFCMWfCuKEQtmgWLEgllgeCNu
+        1ubyuJnn8+lxf5zMdvOR5r8hqqOr/2YOqrqX5vAA/mNnqs92/vbqNAU9kzxeBznXdeL60IBea2LtTzan
+        y769tmGNyAHvx7UQdGm23JhcIm+Dzc7cba3L9PUk+hqxRUuObTn/rxFzYuqEfgtY0bUnoUMPI8LT5YLc
+        RPPtSZy5ngOd4m0nbRvmbMRRdiKcqvs1YJlplIIDY4PlbPqcVv1ADR3TiDt6wjS4tAY+jV7pQ96Ibdoq
+        jWhP6rwmAxqxno3uVxAr22wq4H4MOfTokWKAuFe3Jux0/1kWruDYuRWbeIPrJ5hZMU4kjGa2zXLYTOIa
+        mUVTaz8jVqnG+t94raD+HdUvcsMeuViUi7jmc+3Slmp7Yr+PoCvfj6dyqNvERsTEt5ysBzY/mBkRmuaI
+        742i6mO+m5NojLzPxnKChrNtaA4NJ3UijmBE5ss1bVxxra6X48u8cUNxLcH9QntEt7a8jq3PrZ+oZXoj
+        1qig2APuEkzKJguG9DOCojlccMzBQnH3XfB3DYdnNvzzUMFp4bEXgrp1ApNF0HAA0xjxQxivvp9ixEZM
+        Q66F3xtG1GjrjBjFapoaefJ7E6MZMYDbgT4ZRXMUA66GQ6Kg6DfYFE2QoBibeY4Lj5tD9M9Xw5nKiGQU
+        jiM/p4yIhwLkXh8KDrU5GubR6P/jjAgIk5vaiPnHgkQFQ3lwkuO8EwmY40xmRL4H17Uxo99rc7BZ4Lp8
+        xIbx4/4AZ1AjdmM4I/JR3pZ4WLiiOZpHg4bTJijce7F/qjJivbAZpjMix4JNgH9E6vUjI9r8mhux04ga
+        bWdpRAAVx/OYTwITx8RkQ2Pha44swIslRYwM381JNzlohDNTIDrk1JcDvzWNqKn1NSO6OpPxAiOGRq3w
+        NA/ip/LWaKs0YrRZUxjUiIgKguLsRUIT8BVHPEvRqxDHoVktbqoV1b8ygF3oP8vCFRwfC+K0vL6hvF0+
+        hPj1jYqTaGh3rS8aMXlfZESAzdvnjLMtzoz4WWotcvT3dmk7YyOOA2hc18tqDQcMMfYL7feERv9/ww8x
+        YsG7oxixYBYoRiyYBbwR0WBauJsKCobFwvwFrMxL/mbILaYAAAAASUVORK5CYII=
+</value>
+  </data>
+  <metadata name="pictureBox5.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="pictureBox5.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAALAAAAAWCAYAAABg8hatAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
+        dAAAEnQB3mYfeAAAA2NJREFUaEPtmT3S4yAMhl26cuXCjWcyOUVOsGXq7ZM75BDfpXIzVjICIywMJj82
+        +1E8M0ksQJJfC5k0f/+MqlIpleb5fKo17ve7Ov+cK5VDUgVcKZoq4ErRVAFXiiZTwKPqT41qmginXo3G
+        dvrsz/Mdhovnl8upVd1tFMftQ06+9s8xMl471drcQl6vQl4fveoc7bSXgfk8Xlt7jRGI7U0VeC2BBxFw
+        wLeBEtbd/Gt7UaaAtfBa1ZtiAEJFMbeuiO1vJNrHoDoUJ4iYzbMhji8IeH/CAkaO7XsZaCEysQJa1J0a
+        6Lt0H1Js1ihTwPDkDjfgkbb1x5ISvL5xnf+SWxffoaiy+jZcnLLIfaZ74VTkGDu0EPQdex+3Z6LrIyRs
+        /m1+Midwy5nmgv7qAnb4Gbeth2MjsC5gwffoOq/EwHtApL24vvn+mG22h3bHm9f3Z9MYGndBkc3XtW+O
+        zykCFiGfzFxW5HxN3gObOCDv01jJhrOfgNExvxcCx2dnyQ6+s3nsd80kTjfhAmEBSz1wyjq5MWgbdkPM
+        OGtDY3wxumstbF4bY0Q93rTIYvlMQVdfXJ8qLj0IUp8sxW4ftIUNZ9cKHBvPhDclQJ8YjLClWyjpaxVC
+        iy+Ek1AkaZ3MGAJwG38eX+Aavj1njAlUVv6g5mHEy+IOrKdtI7so3RPJ5vgCpmTOSYEKJyAe2RCyiKD6
+        TlsZinX+PW2dvBim36Di4haq2xKXF8SYMSYknFcFrHPq+kIEBBzqnxkrNoUJOPKkBpAFjNC6zg1LWycv
+        BisssHF7UW7jz1OKgLEg4FjXDwcS4eIlzhVnhsiLEfBacB2+rKwIbppH9A3w501a55UYYqLx5/mMgENx
+        cl/S0eP0mmKeA/nhcWi/5eM4uaiUI+AkG5nJRvQN8W/2Bl+2xkCimW8Q9Nb2lCAU54cEvBiDL7S+L0Do
+        gXahCunHvsCPn8a5gvXFat49FpWbKEjAgDneggDfd4xm1nHmia6THwM7YoM58USiZzb+PJ8SsLbroa83
+        vmB/v8h5goD1vDhOgt8fFOR8RGbeKfz5eI7W3m/eJOAvAwL7yh8M31rnQMQe9qNRpoArH0LaWY5NFfBv
+        xfSfIFZTbU0rsNrvHowq4N8MnqzYfpT6TfdPnQJoUKAxpIGVyv6c1T+82pvMe+94IQAAAABJRU5ErkJg
+        gg==
+</value>
+  </data>
+  <metadata name="label5.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="Header4.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAABAAAHQSAAB0EgAAAAAAAAAA

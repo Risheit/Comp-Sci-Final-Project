@@ -11,11 +11,10 @@ using System.Windows.Forms;
 
 namespace Comp_Sci_Final_Project
 {
-    public partial class CountdownMemory : Form
+    public partial class UntimedMemory : Form
     {
         private readonly Card[,] cards;     // Matrix of cards in the game
         private readonly Random random;     // Random number generator
-        private CountdownTimer timer;       // Timer to display
         private Card firstFlippedCard;      // The card that was previously flipped 
 
         private int points;                 // The amount of points the user has gotten
@@ -26,7 +25,7 @@ namespace Comp_Sci_Final_Project
         /// <summary>
         /// Constructor
         /// </summary>
-        public CountdownMemory()
+        public UntimedMemory()
         {
             // Initialize components
             InitializeComponent(); 
@@ -48,7 +47,7 @@ namespace Comp_Sci_Final_Project
             DrawInitialCards();
 
             // Resize header bar to fit
-            HeaderBar.Size = new Size(ClientSize.Width - 200, 22);
+            HeaderBar.Size = new Size(ClientSize.Width - 150, 22);
         }
 
         /// <summary>
@@ -190,7 +189,6 @@ namespace Comp_Sci_Final_Project
 
             
             // Print starting text in place of timer 
-            timer.Visible = false;
             dialog = new Label()
             {
                 AutoSize = true,
@@ -203,7 +201,6 @@ namespace Comp_Sci_Final_Project
             Controls.Add(dialog);
             await Task.Delay(800);
             Controls.Remove(dialog);
-            timer.Visible = true;
         }
 
         /// <summary>
@@ -260,7 +257,7 @@ namespace Comp_Sci_Final_Project
         /// </summary>
         /// <param name="sender">Sending object</param>
         /// <param name="e">Event details</param>
-        private async void CountdownMemory_Load(object sender, EventArgs e)
+        private async void UntimedMemory_Load(object sender, EventArgs e)
         {
             Label label;                // Label that prints the starting message to the window
 
@@ -278,17 +275,10 @@ namespace Comp_Sci_Final_Project
             };
             Controls.Add(label);
             await Task.Delay(1000);
-            Controls.Remove(label); 
-
-            // Initialize and draw game timer 
-            timer = new CountdownTimer(300, "Time Remaining")
-            {
-                Visible = true
-            };
-            timer.DrawTimer(HeaderBar.Width, 0, this);
+            Controls.Remove(label);
 
             // Check for the end of the game and run game over tasks when it occurs
-            while (!await Task.Run(() => GetGameEnd())) 
+            while (!await Task.Run(() => GetGameEnd()))
             { continue; }
             await RunGameOver();
         }
@@ -339,7 +329,7 @@ namespace Comp_Sci_Final_Project
         {
 
             // Return true when either all cards are matched or time runs out
-            while (GetMatchesMade() != 26 && timer.Timer.Enabled)
+            while (GetMatchesMade() != 26)
             { continue; }
             return true;
         }
@@ -360,7 +350,6 @@ namespace Comp_Sci_Final_Project
                 $"Close this Window or use the quit button to return to the Start Page. \r\n";
 
             // Announce finish and run respite period
-            timer.Visible = false;
             SetAllCardClickEvents(false);
             // Create new label
             label = new Label()
@@ -376,10 +365,7 @@ namespace Comp_Sci_Final_Project
             Controls.Add(label);
             PointsDisplay.Visible = false;
             foreach (Card c in cards)
-            {
-                _ = ClearCard(c);
-                await Task.Delay(30);
-            }
+                c.RemoveCard(this);
             await Task.Delay(1000);
             Controls.Remove(label);
 
@@ -391,15 +377,6 @@ namespace Comp_Sci_Final_Project
             StatisticsHeader.Visible = true;
             Statistics.Visible = true;
             Quit.Visible = true;
-        }
-
-        /// <summary>
-        /// Clears a card using some quick animation
-        /// </summary>
-        private async Task ClearCard(Card c)
-        {
-            await c.FlipCard();
-            c.RemoveCard(this);
         }
 
         /// <summary>

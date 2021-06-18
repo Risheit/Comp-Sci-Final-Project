@@ -12,9 +12,9 @@ namespace Comp_Sci_Final_Project
 {
     class CountdownTimer
     {
-        private int totalSeconds;                   // The total seconds
-        private string labelText;                   // The text displayed on the label about what this timer is
-        private Label label;                        // Label to display time left
+        public int totalSeconds;                    // The total seconds
+        private readonly string labelText;          // The text displayed on the label about what this timer is
+        private readonly Label label;               // Label to display time left
         public Size Size { get; private set; }      // The size of the container (readonly property
         public Timer Timer { get; }                 // Timer to countdown
         private bool visible;                       // The visibility of the timer and its label
@@ -93,6 +93,16 @@ namespace Comp_Sci_Final_Project
             form.Controls.Add(label);
             // Anchor timer to spot on form
             label.Anchor = (AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom);
+        }
+        
+        /// <summary>
+        /// Removes the label of the timer 
+        /// </summary>
+        /// <param name="form">The form being written to (usually the 'this' keyword)</param>
+        public void RemoveTimer(Form form)
+        {
+            // Remove label
+            form.Controls.Remove(label);
         }
 
         /// <summary>
