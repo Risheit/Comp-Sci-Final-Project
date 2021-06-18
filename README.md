@@ -8,6 +8,5 @@ https://bicyclecards.com/players/1/
    - [x] Add Cards -- R
    - [x] Add Timer -- D
    - [x] Match numbers and colours (red 2 with red 2) -- R
-   - [x] Timer (increase difficulty to decrease initial time) -- D
    - [x] Points are determined by number of cards checked (clicked on) -- D
 
