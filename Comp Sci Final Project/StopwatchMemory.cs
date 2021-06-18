@@ -52,7 +52,7 @@ namespace Comp_Sci_Final_Project
             // Initialize and draw cards 
             for (int suit = 1; suit <= 4; suit++) // Suits
                 for (int num = 1; num <= 13; num++) // Numbers
-                    cards[suit - 1, num - 1] = new Card(num, (CardSuit)suit, Enum.GetName(typeof(CardSuit), suit) + num, true);
+                    cards[suit - 1, num - 1] = new Card(num, (CardSuit)suit, Enum.GetName(typeof(CardSuit), suit) + num, false);
             DrawInitialCards();
 
             // Resize header bar to fit

@@ -12,7 +12,7 @@ namespace Comp_Sci_Final_Project
 {
     enum CardSuit       // Enum for card suits
     {
-        hearts,
+        hearts = 1,
         diamonds,
         clubs,
         spades
