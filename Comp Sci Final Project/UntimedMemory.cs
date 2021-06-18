@@ -285,6 +285,7 @@ namespace Comp_Sci_Final_Project
             label = new Label()
             {
                 AutoSize = true,
+                Anchor = (AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom),
                 Name = "startingText",
                 Location = new Point(HeaderBar.Width, 0),
                 BackColor = Color.DarkOliveGreen,
@@ -367,7 +368,7 @@ namespace Comp_Sci_Final_Project
 
             // Set statistics
             Statistics.Text =
-                string.Format("Time Taken: {0:mm\\:ss} \r\n", stopwatch.timer.Elapsed) + 
+                $"Time Passed: {Math.Ceiling((double)stopwatch.timer.Elapsed.TotalSeconds)} s \r\n" + 
                 $"Points: {points} \r\n" +
                 $"Longest Failed Matches in a Row: {mostPairsMissed} \r\n" +
                 $"Total Matches Attempted: {totalPairsFlipped} \r\n" +
@@ -421,7 +422,7 @@ namespace Comp_Sci_Final_Project
         /// <param name="e">Event details</param>
         private void GameTimer_Tick(object sender, EventArgs e)
         {
-            stopwatch.label.Text = string.Format("Time Passed: {0:mm\\:ss}", stopwatch.timer.Elapsed);
+            stopwatch.label.Text = $"Time Passed: {Math.Ceiling((double)stopwatch.timer.Elapsed.TotalSeconds)} s";
         }
     }
 }
