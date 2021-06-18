@@ -1,15 +1,17 @@
-﻿using System;
+﻿// This program runs a game of Memory.
+// June 18, 2021
+// David Odubor-Okojie, Risheit Munshi
+
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Comp_Sci_Final_Project
 {
     enum CardSuit       // Enum for card suits
     {
-        joker = 0,
         hearts,
         diamonds,
         clubs,
@@ -17,13 +19,13 @@ namespace Comp_Sci_Final_Project
     }
     enum CardColour     // Enum for card colours
     {
-        red = 0, 
+        red, 
         black
     }
 
     static class Program
     {
-        private static Dictionary<string, System.Drawing.Bitmap> imageDictionary; // Dictionary for card images
+        private static Dictionary<string, System.Drawing.Bitmap> imageDictionary;       // Dictionary for card images
 
         /// <summary>
         /// The main entry point for the application.
@@ -34,7 +36,7 @@ namespace Comp_Sci_Final_Project
             Application.EnableVisualStyles(); // Prevents blurriness for high-DPI screens
 
 
-            // Initialize dictionary
+            // Initialize dictionary with card images
             imageDictionary = new Dictionary<string, System.Drawing.Bitmap>
             {
                 //// Add images to dictionary
@@ -103,19 +105,19 @@ namespace Comp_Sci_Final_Project
         }
 
         /// <summary>
-        /// Uses given card and suit to look up the corresponding card front image
+        /// Uses given card and suit to look up the corresponding card front image.
         /// </summary>
-        /// <param name="suit">The suit of the card to look up</param>
-        /// <param name="number">The number of the card to look up</param>
-        /// <returns>Card image corresponding to the given card in Bitmap form</returns>
+        /// <param name="suit">The suit of the card to look up,</param>
+        /// <param name="number">The number of the card to look up.</param>
+        /// <returns>Card image corresponding to the given card in Bitmap form.</returns>
         public static System.Drawing.Bitmap GetCardImage(CardSuit suit, int number)
         {
-            System.Drawing.Bitmap cardImage;        // The card image to return
+            Bitmap cardImage;        // The card image to return
 
             imageDictionary.TryGetValue(suit.ToString() + number, out cardImage);
 
             // Write error if lookup fails
-            Debug.WriteLineIf(cardImage == default(System.Drawing.Bitmap), "Lookup failed, " + suit.ToString() + number);
+            Debug.WriteLineIf(cardImage == default(Bitmap), "Lookup failed, " + suit.ToString() + number);
 
             // Return value looked up
             return cardImage;
