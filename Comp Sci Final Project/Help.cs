@@ -17,6 +17,7 @@ namespace Comp_Sci_Final_Project
             // Set control locations
             Images.Location = new Point(label1.Width + 20, Title2.Height + 50);
             this.Width = label1.Width + Images.Width + 50;
+            Title2.Select(); // Select title so scroll bar appears at top of form
         }
 
         /// <summary>
