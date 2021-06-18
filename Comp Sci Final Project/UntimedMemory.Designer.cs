@@ -29,6 +29,7 @@ namespace Comp_Sci_Final_Project
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UntimedMemory));
             this.PointsDisplay = new System.Windows.Forms.Label();
             this.Statistics = new System.Windows.Forms.Label();
@@ -36,6 +37,7 @@ namespace Comp_Sci_Final_Project
             this.StatisticsHeader = new System.Windows.Forms.Label();
             this.GameEnd = new System.Windows.Forms.Label();
             this.HeaderBar = new System.Windows.Forms.PictureBox();
+            this.GameTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.HeaderBar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -114,6 +116,12 @@ namespace Comp_Sci_Final_Project
             this.HeaderBar.TabIndex = 1;
             this.HeaderBar.TabStop = false;
             // 
+            // GameTimer
+            // 
+            this.GameTimer.Enabled = true;
+            this.GameTimer.Interval = 1000;
+            this.GameTimer.Tick += new System.EventHandler(this.GameTimer_Tick);
+            // 
             // UntimedMemory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -149,6 +157,7 @@ namespace Comp_Sci_Final_Project
         private System.Windows.Forms.Button Quit;
         private System.Windows.Forms.Label StatisticsHeader;
         private System.Windows.Forms.Label GameEnd;
+        private System.Windows.Forms.Timer GameTimer;
     }
 }
 

@@ -13,9 +13,10 @@ namespace Comp_Sci_Final_Project
 {
     public partial class UntimedMemory : Form
     {
-        private readonly Card[,] cards;     // Matrix of cards in the game
-        private readonly Random random;     // Random number generator
-        private Card firstFlippedCard;      // The card that was previously flipped 
+        private readonly Card[,] cards;                         // Matrix of cards in the game
+        private readonly Random random;                         // Random number generator
+        private Card firstFlippedCard;                          // The card that was previously flipped 
+        private (Label label, Stopwatch timer) stopwatch;       // The stopwatch maintaining time passed
 
         private int points;                 // The amount of points the user has gotten
         private int pairsMissed;            // The number of unsucessful flips before a match is made
@@ -31,6 +32,19 @@ namespace Comp_Sci_Final_Project
             InitializeComponent(); 
             random = new Random(); 
             firstFlippedCard = null; // No card previously flipped
+            stopwatch.timer = new Stopwatch();
+            stopwatch.label = new Label()
+            {
+                Visible = false,
+                Location = new Point(HeaderBar.Width, 0),
+                AutoSize = true,
+                Margin = new System.Windows.Forms.Padding(0),
+                Name = "StopwatchLabel",
+                Size = new System.Drawing.Size(63, 17),
+                Text = "Time Passed: 00:00",
+                TabIndex = 0
+            };
+            Controls.Add(stopwatch.label);
 
             points = 0;
             pairsMissed = 0;
@@ -42,12 +56,13 @@ namespace Comp_Sci_Final_Project
             for (int i = 1; i <= 4; i++) // Suits
                 for (int j = 1; j <= 13; j++) // Numbers
                 {
-                    cards[i - 1, j - 1] = new Card(j, (CardSuit)i, Enum.GetName(typeof(CardSuit), i) + j, false);
+                    cards[i - 1, j - 1] = new Card(j, (CardSuit)i, Enum.GetName(typeof(CardSuit), i) + j, true);
                 }
             DrawInitialCards();
 
             // Resize header bar to fit
-            HeaderBar.Size = new Size(ClientSize.Width - 150, 22);
+            HeaderBar.Size = new Size(ClientSize.Width - 250, 22);
+
         }
 
         /// <summary>
@@ -187,8 +202,9 @@ namespace Comp_Sci_Final_Project
         {
             Label dialog;       // The dialog that is printed
 
-            
-            // Print starting text in place of timer 
+
+            // Print starting text in place of stopwatch
+            stopwatch.label.Visible = false;
             dialog = new Label()
             {
                 AutoSize = true,
@@ -201,6 +217,7 @@ namespace Comp_Sci_Final_Project
             Controls.Add(dialog);
             await Task.Delay(800);
             Controls.Remove(dialog);
+            stopwatch.label.Visible = true;
         }
 
         /// <summary>
@@ -277,6 +294,10 @@ namespace Comp_Sci_Final_Project
             await Task.Delay(1000);
             Controls.Remove(label);
 
+            // Add stopwatch and start it
+            stopwatch.label.Visible = true;
+            stopwatch.timer.Start();
+
             // Check for the end of the game and run game over tasks when it occurs
             while (!await Task.Run(() => GetGameEnd()))
             { continue; }
@@ -341,8 +362,12 @@ namespace Comp_Sci_Final_Project
         {
             Label label;                // Label that prints the ending message to the window
 
+            // End Stopwatch
+            stopwatch.timer.Stop();
+
             // Set statistics
             Statistics.Text =
+                string.Format("Time Taken: {0:mm\\:ss} \r\n", stopwatch.timer.Elapsed) + 
                 $"Points: {points} \r\n" +
                 $"Longest Failed Matches in a Row: {mostPairsMissed} \r\n" +
                 $"Total Matches Attempted: {totalPairsFlipped} \r\n" +
@@ -387,6 +412,16 @@ namespace Comp_Sci_Final_Project
         private void Quit_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        /// <summary>
+        /// Changes time stopwatch displays every tick
+        /// </summary>
+        /// <param name="sender">Sending object</param>
+        /// <param name="e">Event details</param>
+        private void GameTimer_Tick(object sender, EventArgs e)
+        {
+            stopwatch.label.Text = string.Format("Time Passed: {0:mm\\:ss}", stopwatch.timer.Elapsed);
         }
     }
 }
