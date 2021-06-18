@@ -8,7 +8,7 @@ namespace Comp_Sci_Final_Project
     public partial class StartPage : Form
     {
         /// <summary>
-        /// Initializes a new StarPage form.
+        /// Initializes a new StartPage form.
         /// </summary>
         public StartPage()
         {
