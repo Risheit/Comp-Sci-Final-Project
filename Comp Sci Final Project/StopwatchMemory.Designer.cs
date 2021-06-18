@@ -1,7 +1,7 @@
 ﻿
 namespace Comp_Sci_Final_Project
 {
-    partial class UntimedMemory
+    partial class StopwatchMemory
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace Comp_Sci_Final_Project
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UntimedMemory));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StopwatchMemory));
             this.PointsDisplay = new System.Windows.Forms.Label();
             this.Statistics = new System.Windows.Forms.Label();
             this.Quit = new System.Windows.Forms.Button();

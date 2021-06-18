@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
+﻿// The form that runs a timed game of Memory
+
+using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,7 +12,7 @@ namespace Comp_Sci_Final_Project
         private readonly Card[,] cards;     // Matrix of cards in the game
         private readonly Random random;     // Random number generator
         private CountdownTimer timer;       // Timer to display
-        private Card firstFlippedCard;      // The card that was previously flipped 
+        private Card firstFlippedCard;      // The card that was flipped before a match attempt
 
         private int points;                 // The amount of points the user has gotten
         private int pairsMissed;            // The number of unsucessful flips before a match is made
@@ -24,14 +20,14 @@ namespace Comp_Sci_Final_Project
         private int totalPairsFlipped;      // The total number of flips made
 
         /// <summary>
-        /// Constructor
+        /// Initializes a new CountdownMemory Form.
         /// </summary>
         public CountdownMemory()
         {
             // Initialize components
             InitializeComponent(); 
             random = new Random(); 
-            firstFlippedCard = null; // No card previously flipped
+            firstFlippedCard = null; 
 
             points = 0;
             pairsMissed = 0;
@@ -39,12 +35,10 @@ namespace Comp_Sci_Final_Project
             totalPairsFlipped = 0;
 
             cards = new Card[4, 13]; // Initialize matrix 
-            // Initialize and draw number and face cards with the name being suit + number
-            for (int i = 1; i <= 4; i++) // Suits
-                for (int j = 1; j <= 13; j++) // Numbers
-                {
-                    cards[i - 1, j - 1] = new Card(j, (CardSuit)i, Enum.GetName(typeof(CardSuit), i) + j, false);
-                }
+            // Initialize and draw cards
+            for (int suit = 1; suit <= 4; suit++) 
+                for (int num = 1; num <= 13; num++) 
+                    cards[suit - 1, num - 1] = new Card(num, (CardSuit)suit, Enum.GetName(typeof(CardSuit), suit) + num, false);
             DrawInitialCards();
 
             // Resize header bar to fit
@@ -52,7 +46,7 @@ namespace Comp_Sci_Final_Project
         }
 
         /// <summary>
-        /// Draws the initial matrix of cards using a random unused card in each position
+        /// Draws the initial matrix of cards using a random unused card in each position.
         /// </summary>
         private void DrawInitialCards()
         {
@@ -94,11 +88,11 @@ namespace Comp_Sci_Final_Project
         }
 
         /// <summary>
-        /// Picks a random card that hasn't yet been drawn to the screen from the given array
+        /// Picks a random card that hasn't yet been drawn to the screen from the given array.
         /// </summary>
-        /// <param name="numberDrawn">The number of drawn cards</param>
-        /// <param name="drawnCards">The cards that have already been drawn</param>
-        /// <returns>The validate card to draw</returns>
+        /// <param name="numberDrawn">The number of drawn cards.</param>
+        /// <param name="drawnCards">The cards that have already been drawn.</param>
+        /// <returns>The validated card to draw.</returns>
         private Card PickValidCard(int numberDrawn, Card[] drawnCards)
         {
             int randomSuit;         // A randomly selected suit
@@ -107,8 +101,9 @@ namespace Comp_Sci_Final_Project
                                     
             // Pick random card 
             randomSuit = random.Next(0, 4);
-            randomNumber = random.Next(0, 13); // Use only 0-1 as numbers is joker is suit
-            card = cards[randomSuit, randomNumber]; 
+            randomNumber = random.Next(0, 13);
+            card = cards[randomSuit, randomNumber];
+            
             // Validate the card
             for (int k = 0; k < numberDrawn; k++)
                 if (card == drawnCards[k]) // Pick new cards if the picked card has already been drawn
@@ -126,16 +121,16 @@ namespace Comp_Sci_Final_Project
 
         /// <summary>
         /// Checks if a flipped card is a match with the card clicked before this, if it exists. 
-        /// If it does, then it removes both cards and assigns points.
+        /// If it does match, then it removes both cards and assigns points.
         /// </summary>
-        /// <param name="sender">Sending objects</param>
-        /// <param name="e">Event details</param>
+        /// <param name="sender">Sending objects.</param>
+        /// <param name="e">Event details.</param>
         private async void CheckCardMatch(object sender, EventArgs e)
         {
             PictureBox cardImage;               // The card image of the card being flipped
             (int row, int column) index;        // The matrix index (row, column) of the card flipped
 
-            // Get index of card
+            // Get index of flipped card
             cardImage = (PictureBox)sender;
             index = FindCardMatrixIndex(cardImage.Name);
 
@@ -150,12 +145,12 @@ namespace Comp_Sci_Final_Project
                 return;
             }
 
-            // End function if the flipped card is identical to the first card
+            // Do nothing if the flipped card is identical to the first card
             if (cards[index.row, index.column] == firstFlippedCard)
                 return;
 
-            // Delay checking card match and interaction with cards
-            SetAllCardClickEvents(false);
+            // Delay checking card match and interaction with cards so player can check both cards
+            SetAllCardClickEvents(false); // Prevent player interaction
             await Task.Delay(700);
             // If cards match, remove both and award points to player
             if (cards[index.row, index.column].IsMatch(firstFlippedCard))    
@@ -166,7 +161,7 @@ namespace Comp_Sci_Final_Project
                 AwardPoints();
                 _ = PrintMatchDialog(); // Don't stop game while printing dialog
             }
-            else // If cards don't match, flip both of them to their back at the same time 
+            else // If cards don't match, flip both of them back at the same time 
             {
                 pairsMissed++; // Increase the number of missed matches
                 await Task.WhenAll(firstFlippedCard.FlipCard(), cards[index.row, index.column].FlipCard());
@@ -176,18 +171,17 @@ namespace Comp_Sci_Final_Project
             // If the amount of pairs missed is a record, save it
             mostPairsMissed = mostPairsMissed < pairsMissed ? pairsMissed : mostPairsMissed; 
 
-            SetAllCardClickEvents(true); // Reactivate flipping
+            SetAllCardClickEvents(true); // Reactivate click events
             firstFlippedCard = null; // Reset the first flipped card
         }
 
         /// <summary>
-        /// Prints a message about a successful match to the player
+        /// Prints a message about a successful match to the player.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A task when completed.</returns>
         private async Task PrintMatchDialog()
         {
             Label dialog;       // The dialog that is printed
-
             
             // Print starting text in place of timer 
             timer.Visible = false;
@@ -202,17 +196,18 @@ namespace Comp_Sci_Final_Project
             };
             Controls.Add(dialog);
             await Task.Delay(800);
+            // Bring back the timer
             Controls.Remove(dialog);
             timer.Visible = true;
         }
 
         /// <summary>
-        /// Looks at the player's statistics before awarding points as needed
+        /// Looks at the player's statistics before awarding points as needed.
         /// </summary>
         private void AwardPoints()
         {
-            // Increase points depending on the pairs missed, prevenint any points lost
-            points += 100 - (4 * pairsMissed) < 0? 0 : 100 - (4 * pairsMissed);
+            // Decrease points depending on the pairs missed, preventing any negative points
+            points += 100 - (4 * pairsMissed) < 0 ? 0 : 100 - (4 * pairsMissed);
             pairsMissed = 0; // Reset the missed pairs 
 
             // Repaint header to reflect change in points
@@ -221,34 +216,36 @@ namespace Comp_Sci_Final_Project
 
         /// <summary>
         /// Loops through the cards array to try and find the index (row, column) value of a card in the card array that
-        /// matches the given name of a card
+        /// matches the given name of a card.
         /// </summary>
-        /// <param name="name">The name to search the matrix for</param>
-        /// <returns>the row and column index values if the name is found, otherwise (-1, -1)</returns>
+        /// <param name="name">The name to search the matrix for.</param>
+        /// <returns>the row and column index values if the name is found, otherwise (-1, -1).</returns>
         private (int,int) FindCardMatrixIndex(string name)
         {
-            // Look for a match of the string in the cards arr   
+            // Look for a match between the given name and the name of the card in the card array
             for (int row = 0; row < 4; row++)
                 for (int column = 0; column < 13; column++)
                     if (cards[row, column].CardImage.Name == name)
                         return (row, column);
-            return (-1, -1);
+
+            return (-1, -1); // No cards found
         }
 
         /// <summary>
-        /// Loops through the cards array and sets all cards to either have card click events (e.x. flipping or card checking)
-        /// or not depending on the given state
+        /// Loops through the cards array and sets all cards to either have card click events (e.x. flipping and card checking)
+        /// or not depending on the given state.
         /// </summary>
-        /// <param name="state">true if cards have card events, false otherwise</param>
+        /// <param name="state">true if cards should have card events, false otherwise.</param>
         private void SetAllCardClickEvents(bool state)
         {
+            // Loop through each card and adjust click events
             foreach (Card card in cards)
-                if (state)
+                if (state) // Add
                 {
                     card.CardImage.MouseClick += CheckCardMatch;
                     card.IsFlipOnClick = true;
                 }
-                else
+                else // Remove
                 {
                     card.CardImage.MouseClick -= CheckCardMatch;
                     card.IsFlipOnClick = false;
@@ -256,16 +253,16 @@ namespace Comp_Sci_Final_Project
         }
 
         /// <summary>
-        /// Runs events on window load
+        /// Starts the game on window load.
         /// </summary>
-        /// <param name="sender">Sending object</param>
-        /// <param name="e">Event details</param>
+        /// <param name="sender">Sending object.</param>
+        /// <param name="e">Event details.</param>
         private async void CountdownMemory_Load(object sender, EventArgs e)
         {
             Label label;                // Label that prints the starting message to the window
 
             // Give time for player to get ready 
-            await RunRespitePeriod("Starting in");
+            await RunStartingPeriod();
             
             // Print starting text for 1 second 
             label = new Label()
@@ -280,7 +277,7 @@ namespace Comp_Sci_Final_Project
             await Task.Delay(1000);
             Controls.Remove(label); 
 
-            // Initialize and draw game timer 
+            // Initialize and draw new game timer 
             timer = new CountdownTimer(300, "Time Remaining")
             {
                 Visible = true
@@ -294,29 +291,30 @@ namespace Comp_Sci_Final_Project
         }
 
         /// <summary>
-        /// Runs a respite period for 4 seconds to give the player some time to breathe, 
-        /// printing a timer at top right of the window to show how long it is
+        /// Runs a starting period for 4 seconds to give the player some time to breathe, 
+        /// printing a timer at top right of the window to show how long it is.
         /// </summary>
-        /// <param name="text">The text to pring on the timer label</param>
-        private async Task RunRespitePeriod(string text)
+        /// <returns>A task when completed.</returns>
+        private async Task RunStartingPeriod()
         {
-            CountdownTimer preperation;     // Timer during the preperation period
+            CountdownTimer starting;     // Timer during the starting period
 
             // Create and draw a timer to show how long the preperation period is
-            preperation = new CountdownTimer(4, text);
-            preperation.DrawTimer(HeaderBar.Width, 0, this);
+            starting = new CountdownTimer(4, "Starting in");
+            starting.DrawTimer(HeaderBar.Width, 0, this);
 
             SetAllCardClickEvents(false); // Prevent card clicks
-            await Task.Run(() => preperation.GetTimerEnd()); // Wait for the preperation timer to end
+            await Task.Run(() => starting.GetTimerEnd()); // Wait for the preperation timer to end
 
-            preperation.RemoveTimer(this); 
-            SetAllCardClickEvents(true); // Activate card click events
+            // Get rid of timer and end starting period
+            starting.RemoveTimer(this); 
+            SetAllCardClickEvents(true);
         }
 
         /// <summary>
-        /// Gets the number of matches made (the number of invisible cards / 2)
+        /// Gets the number of matches made (the number of removed cards / 2).
         /// </summary>
-        /// <returns>The number of matches made</returns>
+        /// <returns>The number of matches made.</returns>
         private int GetMatchesMade()
         {
             int numberNotVisible;       // The number of cards that aren't visible
@@ -325,19 +323,18 @@ namespace Comp_Sci_Final_Project
 
             // Loop through cards and check visibility
             foreach (Card c in cards)
-                if (!c.CardImage.Visible)
+                if (!c.CardImage.Visible) // Increase for every not visible card
                     numberNotVisible++;
 
-            return numberNotVisible / 2; // Returns true if all cards are invisible, false otherwise
+            return numberNotVisible / 2; // Return the number of pairs of not visible cards
         }
 
         /// <summary>
         /// Creates a loop and returns true when the game ends. Recommened use in an async function.
         /// </summary>
-        /// <returns><see langword="true"/> when game ends</returns>
+        /// <returns><see langword="true"/> when game ends.</returns>
         private bool GetGameEnd()
         {
-
             // Return true when either all cards are matched or time runs out
             while (GetMatchesMade() != 26 && timer.Timer.Enabled)
             { continue; }
@@ -345,8 +342,9 @@ namespace Comp_Sci_Final_Project
         }
 
         /// <summary>
-        /// Ends the game in a couple seconds and prints statistics
+        /// Ends the game in a couple seconds and prints statistics.
         /// </summary>
+        /// <returns>A task when completed.</returns>
         private async Task RunGameOver()
         {
             Label label;                // Label that prints the ending message to the window
@@ -358,11 +356,7 @@ namespace Comp_Sci_Final_Project
                 $"Total Matches Attempted: {totalPairsFlipped} \r\n" +
                 $"Total Matches Made: {GetMatchesMade()} \r\n\r\n" +
                 $"Close this Window or use the quit button to return to the Start Page. \r\n";
-
-            // Announce finish and run respite period
-            timer.Visible = false;
-            SetAllCardClickEvents(false);
-            // Create new label
+            // Initialize label
             label = new Label()
             {
                 AutoSize = true,
@@ -373,6 +367,8 @@ namespace Comp_Sci_Final_Project
             };
             
             // Print ending text and remove cards
+            SetAllCardClickEvents(false);
+            timer.Visible = false;
             Controls.Add(label);
             PointsDisplay.Visible = false;
             foreach (Card c in cards)
@@ -381,12 +377,12 @@ namespace Comp_Sci_Final_Project
                 await Task.Delay(30);
             }
             await Task.Delay(1000);
-            Controls.Remove(label);
+            Controls.Remove(label); // Remove label
 
             // Have header bar take full top of form
             HeaderBar.Dock = DockStyle.Top;
 
-            // Make statistics visible
+            // Make statistics and quit button visible
             GameEnd.Visible = true;
             StatisticsHeader.Visible = true;
             Statistics.Visible = true;
@@ -394,8 +390,9 @@ namespace Comp_Sci_Final_Project
         }
 
         /// <summary>
-        /// Clears a card using some quick animation
+        /// Clears a given card by removing it while flipping it.
         /// </summary>
+        /// <returns>A task when completed.</returns>
         private async Task ClearCard(Card c)
         {
             await c.FlipCard();
@@ -403,11 +400,11 @@ namespace Comp_Sci_Final_Project
         }
 
         /// <summary>
-        /// Closes the form
+        /// Closes the form.
         /// </summary>
-        /// <param name="sender">Sending object</param>
-        /// <param name="e">Event details</param>
-        private void Quit_Click(object sender, EventArgs e)
+        /// <param name="sender">Sending object.</param>
+        /// <param name="e">Event details.</param>
+        private void QuitForm(object sender, EventArgs e)
         {
             Close();
         }

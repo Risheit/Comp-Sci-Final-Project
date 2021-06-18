@@ -1,43 +1,40 @@
 ﻿// Contains a timer and a label to display the timer
 
 using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Comp_Sci_Final_Project
 {
     class CountdownTimer
     {
-        public int totalSeconds;                    // The total seconds
-        private readonly string labelText;          // The text displayed on the label about what this timer is
+        private int secondsLeft;                    // The seconds left before the timer stops
+        private readonly string labelText;          // The text displayed on the label about this timer 
         private readonly Label label;               // Label to display time left
-        public Size Size { get; private set; }      // The size of the container (readonly property
         public Timer Timer { get; }                 // Timer to countdown
-        private bool visible;                       // The visibility of the timer and its label
-        public bool Visible                         // The visibility of the timer and its label (public property)
+        public Size Size { get; private set; }      // The size of the container (readonly property)
+
+        private bool visible;       // The visibility of the timer and its label
+        public bool Visible         // The visibility of the timer and its label (public property)
         {
-            get => visible;
+            get => visible; // Get field
             set
             {
                 label.Visible = value; // Set the visibility of the label
-                visible = value;
+                visible = value; // Change value of field
             }
         }
 
         /// <summary>
-        /// Constructor that initializes the timer and sets its countdown amount
+        /// Initializes a new CountdownTimer object.
         /// </summary>
-        /// <param name="seconds">The number of seconds the timer runs for</param>
-        /// <param name="text">The text to display for this label before a colon and 
-        /// the time remaining</param>
+        /// <param name="seconds">The number of seconds the timer runs for.</param>
+        /// <param name="text">The text to display on this timer before a colon and 
+        /// the time remaining (text: 30 s).</param>
         public CountdownTimer(int seconds, string text)
         {
             // Initialize
-            totalSeconds = seconds;
+            secondsLeft = seconds;
             labelText = text;
             Timer = new Timer()
             {
@@ -56,37 +53,35 @@ namespace Comp_Sci_Final_Project
         }
 
         /// <summary>
-        /// Event that occurs every timer tick
+        /// Decreases the timer and checks if it needs to stop every tick.
         /// </summary>
-        /// <param name="sender">Sending object</param>
-        /// <param name="e">Event details</param>
+        /// <param name="sender">Sending object.</param>
+        /// <param name="e">Event details.</param>
         private void Timer_Tick(object sender, EventArgs e)
         {
             // Count down
-            if (totalSeconds > 0) // Calculation
+            if (secondsLeft > 0)
             {
                 // Decrease timer by a second until it has stopped
-                totalSeconds--;
-                int seconds = totalSeconds;
-                label.Text = $"{labelText}: {seconds} s"; // Change displayed time
+                secondsLeft--;
+                label.Text = $"{labelText}: {secondsLeft} s"; // Change displayed time
             }
             else // When timer is 0, it stops
             {
-                // tells the timer to stop
                 Timer.Stop();
             }
         }
 
         /// <summary>
-        /// Draws a label of the timer with upper left point at a given point
+        /// Draws a label of the timer with the upper left point at a given point.
         /// </summary>
-        /// <param name="x">The card's x position in pixels</param>
-        /// <param name="y">The card's y position in pixels</param>
-        /// <param name="form">The form being written to (usually the 'this' keyword)</param>
+        /// <param name="x">The card's x position in pixels.</param>
+        /// <param name="y">The card's y position in pixels.</param>
+        /// <param name="form">The form being written to (usually the 'this' keyword).</param>
         public void DrawTimer(int x, int y, Form form)
         {
             // Set the location for the label
-            label.Location = new System.Drawing.Point(x, y);
+            label.Location = new Point(x, y);
             label.BringToFront();
 
             // Draw label
@@ -96,9 +91,9 @@ namespace Comp_Sci_Final_Project
         }
         
         /// <summary>
-        /// Removes the label of the timer 
+        /// Removes the timer from the form.
         /// </summary>
-        /// <param name="form">The form being written to (usually the 'this' keyword)</param>
+        /// <param name="form">The form being written to (usually the 'this' keyword).</param>
         public void RemoveTimer(Form form)
         {
             // Remove label
@@ -106,15 +101,14 @@ namespace Comp_Sci_Final_Project
         }
 
         /// <summary>
-        /// Creates a loop and returns true when the timer ends. Recommened use in an async function.
+        /// Creates a loop and returns true when the timer ends. Recommened use is in an async function.
         /// </summary>
-        /// <returns><see langword="true"/> when timer ends</returns>
+        /// <returns><see langword="true"/> when timer ends.</returns>
         public bool GetTimerEnd()
         {
             while (Timer.Enabled) // Loop until timer stops
             { continue; }
             return true;
         }
-
     }
 }

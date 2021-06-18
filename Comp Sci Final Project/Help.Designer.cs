@@ -33,11 +33,11 @@ namespace Comp_Sci_Final_Project
             System.Windows.Forms.Label Authors;
             System.Windows.Forms.Label Title1;
             System.Windows.Forms.Label Heading1;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Help));
             System.Windows.Forms.PictureBox pictureBox1;
             System.Windows.Forms.PictureBox pictureBox2;
             System.Windows.Forms.Label label3;
             System.Windows.Forms.Label label2;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Help));
             System.Windows.Forms.Label Header2;
             System.Windows.Forms.Label label4;
             System.Windows.Forms.Label Header3;
@@ -46,6 +46,9 @@ namespace Comp_Sci_Final_Project
             System.Windows.Forms.PictureBox pictureBox5;
             System.Windows.Forms.Label label5;
             System.Windows.Forms.Label Header4;
+            System.Windows.Forms.Label Header5;
+            System.Windows.Forms.LinkLabel CardImages;
+            System.Windows.Forms.LinkLabel JokerImage;
             this.Title2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.Images = new System.Windows.Forms.Panel();
@@ -65,6 +68,9 @@ namespace Comp_Sci_Final_Project
             pictureBox5 = new System.Windows.Forms.PictureBox();
             label5 = new System.Windows.Forms.Label();
             Header4 = new System.Windows.Forms.Label();
+            Header5 = new System.Windows.Forms.Label();
+            CardImages = new System.Windows.Forms.LinkLabel();
+            JokerImage = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(CardImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(pictureBox2)).BeginInit();
@@ -104,16 +110,6 @@ namespace Comp_Sci_Final_Project
             Title1.TabIndex = 5;
             Title1.Text = "Memory";
             // 
-            // Title2
-            // 
-            this.Title2.AutoSize = true;
-            this.Title2.Font = new System.Drawing.Font("Garamond", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Title2.Location = new System.Drawing.Point(406, 28);
-            this.Title2.Name = "Title2";
-            this.Title2.Size = new System.Drawing.Size(270, 68);
-            this.Title2.TabIndex = 6;
-            this.Title2.Text = "Help Page";
-            // 
             // Heading1
             // 
             Heading1.AutoSize = true;
@@ -123,15 +119,6 @@ namespace Comp_Sci_Final_Project
             Heading1.Size = new System.Drawing.Size(103, 22);
             Heading1.TabIndex = 7;
             Heading1.Text = "Game Rules\r\n";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 183);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(387, 102);
-            this.label1.TabIndex = 8;
-            this.label1.Text = resources.GetString("label1.Text");
             // 
             // pictureBox1
             // 
@@ -230,19 +217,6 @@ namespace Comp_Sci_Final_Project
             pictureBox5.TabIndex = 19;
             pictureBox5.TabStop = false;
             // 
-            // Images
-            // 
-            this.Images.Controls.Add(pictureBox5);
-            this.Images.Controls.Add(pictureBox4);
-            this.Images.Controls.Add(pictureBox3);
-            this.Images.Controls.Add(label3);
-            this.Images.Controls.Add(pictureBox2);
-            this.Images.Controls.Add(pictureBox1);
-            this.Images.Location = new System.Drawing.Point(407, 104);
-            this.Images.Name = "Images";
-            this.Images.Size = new System.Drawing.Size(278, 497);
-            this.Images.TabIndex = 20;
-            // 
             // label5
             // 
             label5.AutoSize = true;
@@ -264,13 +238,80 @@ namespace Comp_Sci_Final_Project
             Header4.TabIndex = 21;
             Header4.Text = "Timed Mode";
             // 
+            // Header5
+            // 
+            Header5.AutoSize = true;
+            Header5.Font = new System.Drawing.Font("Microsoft PhagsPa", 10.2F, System.Drawing.FontStyle.Bold);
+            Header5.Location = new System.Drawing.Point(12, 636);
+            Header5.Name = "Header5";
+            Header5.Size = new System.Drawing.Size(143, 22);
+            Header5.TabIndex = 23;
+            Header5.Text = "Image Resources";
+            // 
+            // CardImages
+            // 
+            CardImages.AutoSize = true;
+            CardImages.Location = new System.Drawing.Point(14, 658);
+            CardImages.Name = "CardImages";
+            CardImages.Size = new System.Drawing.Size(87, 17);
+            CardImages.TabIndex = 24;
+            CardImages.TabStop = true;
+            CardImages.Text = "Card Images";
+            CardImages.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.CardImages_LinkClicked);
+            // 
+            // Title2
+            // 
+            this.Title2.AutoSize = true;
+            this.Title2.Font = new System.Drawing.Font("Garamond", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Title2.Location = new System.Drawing.Point(406, 28);
+            this.Title2.Name = "Title2";
+            this.Title2.Size = new System.Drawing.Size(270, 68);
+            this.Title2.TabIndex = 6;
+            this.Title2.Text = "Help Page";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(14, 183);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(387, 102);
+            this.label1.TabIndex = 8;
+            this.label1.Text = resources.GetString("label1.Text");
+            // 
+            // Images
+            // 
+            this.Images.Controls.Add(pictureBox5);
+            this.Images.Controls.Add(pictureBox4);
+            this.Images.Controls.Add(pictureBox3);
+            this.Images.Controls.Add(label3);
+            this.Images.Controls.Add(pictureBox2);
+            this.Images.Controls.Add(pictureBox1);
+            this.Images.Location = new System.Drawing.Point(407, 104);
+            this.Images.Name = "Images";
+            this.Images.Size = new System.Drawing.Size(278, 497);
+            this.Images.TabIndex = 20;
+            // 
+            // JokerImage
+            // 
+            JokerImage.AutoSize = true;
+            JokerImage.Location = new System.Drawing.Point(14, 681);
+            JokerImage.Name = "JokerImage";
+            JokerImage.Size = new System.Drawing.Size(85, 17);
+            JokerImage.TabIndex = 25;
+            JokerImage.TabStop = true;
+            JokerImage.Text = "Joker Image";
+            JokerImage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.JokerImage_LinkClicked);
+            // 
             // Help
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(731, 450);
+            this.ClientSize = new System.Drawing.Size(752, 450);
+            this.Controls.Add(JokerImage);
+            this.Controls.Add(CardImages);
+            this.Controls.Add(Header5);
             this.Controls.Add(label5);
             this.Controls.Add(Header4);
             this.Controls.Add(this.Images);

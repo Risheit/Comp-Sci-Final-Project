@@ -53,11 +53,11 @@
     <Compile Include="Help.Designer.cs">
       <DependentUpon>Help.cs</DependentUpon>
     </Compile>
-    <Compile Include="UntimedMemory.cs">
+    <Compile Include="StopwatchMemory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UntimedMemory.Designer.cs">
-      <DependentUpon>UntimedMemory.cs</DependentUpon>
+    <Compile Include="StopwatchMemory.Designer.cs">
+      <DependentUpon>StopwatchMemory.cs</DependentUpon>
     </Compile>
     <Compile Include="CountdownMemory.cs">
       <SubType>Form</SubType>
@@ -77,8 +77,8 @@
     <EmbeddedResource Include="Help.resx">
       <DependentUpon>Help.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UntimedMemory.resx">
-      <DependentUpon>UntimedMemory.cs</DependentUpon>
+    <EmbeddedResource Include="StopwatchMemory.resx">
+      <DependentUpon>StopwatchMemory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CountdownMemory.resx">
       <DependentUpon>CountdownMemory.cs</DependentUpon>

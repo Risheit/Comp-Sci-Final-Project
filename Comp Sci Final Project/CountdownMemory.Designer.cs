@@ -29,7 +29,7 @@ namespace Comp_Sci_Final_Project
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UntimedMemory));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StopwatchMemory));
             this.PointsDisplay = new System.Windows.Forms.Label();
             this.HeaderBar = new System.Windows.Forms.PictureBox();
             this.Statistics = new System.Windows.Forms.Label();
@@ -89,7 +89,7 @@ namespace Comp_Sci_Final_Project
             this.Quit.Text = "Quit";
             this.Quit.UseVisualStyleBackColor = false;
             this.Quit.Visible = false;
-            this.Quit.Click += new System.EventHandler(this.Quit_Click);
+            this.Quit.Click += new System.EventHandler(this.QuitForm);
             // 
             // StatisticsHeader
             // 

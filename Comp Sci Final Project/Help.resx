@@ -129,15 +129,6 @@
   <metadata name="Heading1.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Memory is a game where you match cards to earn points. 
-A card is considered to be a match with another card when 
-its number and colour are the same. Each match you make
-earns you up to 100 points, with you losing 4 points for each
-match you miss. 
- 
-</value>
-  </data>
   <metadata name="pictureBox1.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
@@ -239,6 +230,24 @@ found here, if you are playing a timed game.
     <value>False</value>
   </metadata>
   <metadata name="Header4.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="Header5.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="CardImages.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Memory is a game where you match cards to earn points. 
+A card is considered to be a match with another card when 
+its number and colour are the same. Each match you make
+earns you up to 100 points, with you losing 4 points for each
+match you miss. 
+ 
+</value>
+  </data>
+  <metadata name="JokerImage.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
