@@ -47,16 +47,41 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Card.cs" />
-    <Compile Include="Memory.cs">
+    <Compile Include="Help.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Memory.Designer.cs">
-      <DependentUpon>Memory.cs</DependentUpon>
+    <Compile Include="Help.Designer.cs">
+      <DependentUpon>Help.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StopwatchMemory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StopwatchMemory.Designer.cs">
+      <DependentUpon>StopwatchMemory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CountdownMemory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CountdownMemory.Designer.cs">
+      <DependentUpon>CountdownMemory.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Memory.resx">
-      <DependentUpon>Memory.cs</DependentUpon>
+    <Compile Include="CountdownTimer.cs" />
+    <Compile Include="StartPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StartPage.Designer.cs">
+      <DependentUpon>StartPage.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Help.resx">
+      <DependentUpon>Help.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StopwatchMemory.resx">
+      <DependentUpon>StopwatchMemory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CountdownMemory.resx">
+      <DependentUpon>CountdownMemory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -68,6 +93,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="StartPage.resx">
+      <DependentUpon>StartPage.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -89,6 +117,207 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Placeholder card front.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\2C.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\2D.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\2H.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\2S.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\3C.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\3D.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\3H.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\3S.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\4C.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\4D.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\4H.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\4S.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\5C.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\5D.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\5H.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\5S.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\6C.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\6D.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\6H.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\6S.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\7C.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\7D.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\7H.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\7S.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\8C.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\8D.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\8H.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\8S.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\9C.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\9D.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\9H.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\9S.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\10C.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\10D.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\10H.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\10S.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\AC.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\aces.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\AD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\AH.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\AS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\back_cards-07.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\blue_back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\gray_back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\green_back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\honor_clubs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\honor_diamond.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\honor_heart-14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\honors_spade-14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\JC.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\JD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\JH.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\JS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\KC.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\KD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\KH.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\KS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\purple_back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\QC.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\QD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\QH.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\QS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\red_back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\yellow_back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\red_back1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\AD1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PNG\joker.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
