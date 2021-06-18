@@ -48,7 +48,7 @@ namespace Comp_Sci_Final_Project
             {
                 AutoSize = true,
                 Name = "timerLabel",
-                Text = $"{labelText}: {seconds}"
+                Text = $"{labelText}: {seconds} s"
             };
             Size = label.Size;
 
@@ -68,7 +68,7 @@ namespace Comp_Sci_Final_Project
                 // Decrease timer by a second until it has stopped
                 totalSeconds--;
                 int seconds = totalSeconds;
-                label.Text = $"{labelText}: {seconds}"; // Change displayed time
+                label.Text = $"{labelText}: {seconds} s"; // Change displayed time
             }
             else // When timer is 0, it stops
             {
