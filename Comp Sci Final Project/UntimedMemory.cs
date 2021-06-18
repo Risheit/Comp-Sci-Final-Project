@@ -386,8 +386,9 @@ namespace Comp_Sci_Final_Project
                 BackColor = Color.Gold,
                 Text = "Finished!"
             };
-            
+
             // Print ending text and remove cards
+            stopwatch.label.Visible = false;
             Controls.Add(label);
             PointsDisplay.Visible = false;
             foreach (Card c in cards)
